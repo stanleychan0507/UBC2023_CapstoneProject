@@ -8,5 +8,3 @@ So we concluded that, Kanban would be our best choice.
 
 We also noted that the "Scrumban" method, which is a combination of Scrum and Kanban would be a benefitial for our project. We might consider this approach as our project unfolded.
 
-# Making a header HIHIHIHIHI 
-dshfkjsdhfksdhf
