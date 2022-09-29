@@ -11,7 +11,7 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 ## Tech stack
 |Front-end|Pros|Cons|
 |---|---|---|
-|Dash (Preferred)|•Perfect for Dashboarding and data visualization<br>•Good callback debugger<br>•Highly scalable|•Potential trouble of finding support for vector database|
+|Dash (Preferred)|•Perfect for Dashboarding and data visualization<br>•Good callback debugger<br>•Highly scalable|•no cons given this framework is highly suitable for client|
 |React|•Good for Dynamic web pages <br>•Components are reusable<br>•Ease of testing|•React evolves quickly<br>•Lacks proper documentation<br>•Lacking in features for a framework|
 |Vue|•Lightweight with reliable performance<br>•Good documentation<br>•Supports two-way bindings|•Lack of libraries compared to other frameworks<br>•Difficulty in scaling|
 
