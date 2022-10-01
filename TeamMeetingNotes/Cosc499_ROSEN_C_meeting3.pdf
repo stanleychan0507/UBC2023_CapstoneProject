@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+	\apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+
+\begin{document}
+	
+	\title{Cosc 499 - ROSEN - C}
+	\subtitle{Meeting 3}
+	\author{Pak In Chan (92477348)\\ Luca de Verteuil (81822173)\\ Shan Hong Liew (45590304)}
+	
+	\date{\today}
+	
+	\maketitle
+	
+	\section*{Abstract}
+	This document is the report on our meeting on 30th September 2022.
+	
+	\section*{On previous meeting} 
+	We allocate two task : Research on Blender, and techstack to use. We also finished figuring out how Gitstat works.
+	
+	\section*{Goal} 
+	The following is the goal for this meeting : 
+	\begin{enumerate}
+		\item Submit Gitstat Week 4
+		\item Gathering what to ask for the next client meeting
+		\item General discussion
+	\end{enumerate}
+	
+	\section*{Goal 1 : Submit Gitstat Week 4.} 
+	We successfuly submit Gitstat during this meeting.
+	
+	Status of Goal : \textbf{Achieved.}
+	\section*{Goal 2 : Gathering what to ask for the next client meeting}
+	We started this task by laying out the pros and cons of different techstack. 
+	
+	Status of Goal : \textbf{Not Achieved.}
+	We will be discussing about our choice of techstack next Monday.
+	
+	\section*{Goal 3 : General discussion}
+	We have discussed about the use of Blender during the meeting. We suggesting the possibility of using Python API to randomly generate objects to fill up the pipeline. We also questioned about the specification of the Blender model and most preferably, asking for an example from the client so we have a clearer picture. We also comfirmed the due date of our first Milestone, which is the requirement report and presentation, in order to keep ahead of schedule.
+	\\
+	
+	Status of Goal : \textbf{Achieved.}
+	
+	\section*{Next Meeting}
+	The next team meeting will be on : 3rd October 2022, TBC. \\
+	It is expected that by the next meeting we have the following : 
+	\begin{itemize}
+		\item An understanding of each techstack from each members.
+	\end{itemize}
+\end{document}
