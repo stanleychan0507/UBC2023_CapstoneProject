@@ -40,3 +40,12 @@ The download link is [here](https://www.blender.org/download/). <br>
 ## Functional Requirement
 
 ## OpenCV
+### How to download.
+#### Prerequisites
+The user will need the following : 
+- C++ compiler and build tools, Visual Studio IDE is fine.
+- Install CMaker from the official site or some other source.
+- Windows, macOS, Linux, BSD and Android.
+
+### Download link
+The download link is [here](https://github.com/opencv/opencv/releases). <br>
