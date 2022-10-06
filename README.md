@@ -22,4 +22,5 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 |Flask|•light-weight framework<br>•Suitable for small projects<br>•Customizable|•Does not have built-in support for basic database system<br>•Slow deployment of minimum viable product<br>•Limited community support|
 
 ## Blender
-For a detail documentation check OtherNotes->Cosc499_ROSEN_C_Blender.pdf.
+For a detail documentation check OtherNotes->Cosc499_ROSEN_C_Blender.pdf. //
+In summary, 
