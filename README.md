@@ -21,3 +21,4 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 |ExpressJS|•Capable of handling multiple requests<br>•Customizable<br>•Quick deployment|•Not ideal for CPU intensive work<br>•Lacks standardization<br>•Lacks support for asynchronous errors|
 |Flask|•light-weight framework<br>•Suitable for small projects<br>•Customizable|•Does not have built-in support for basic database system<br>•Slow deployment of minimum viable product<br>•Limited community support|
 
+## Blender
