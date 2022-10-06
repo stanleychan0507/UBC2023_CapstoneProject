@@ -35,3 +35,8 @@ The download link is [here](https://www.blender.org/download/). <br>
 - At this document of time(5 Oct 2022), Blender is at version 3.3. <br>
 - The user will download an installer first, select the file location, and proceed to download the application. <br>
 
+## Active Learning Algorithm
+
+## Functional Requirement
+
+## OpenCV
