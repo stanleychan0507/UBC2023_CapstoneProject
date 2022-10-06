@@ -21,7 +21,14 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 |ExpressJS|•Capable of handling multiple requests<br>•Customizable<br>•Quick deployment|•Not ideal for CPU intensive work<br>•Lacks standardization<br>•Lacks support for asynchronous errors|
 |Flask|•light-weight framework<br>•Suitable for small projects<br>•Customizable|•Does not have built-in support for basic database system<br>•Slow deployment of minimum viable product<br>•Limited community support|
 
+## Machine Learning algorithms
+|Algorithms|Pros|Cons|
+|---|---|---|
+|Google AutoML|•Easy to use|•Model train time caps at 1 hour for free users|
+|VGG16|•Easy to use|•High inference time (time for model to process new data and make predictions)|
+|Self-written|•Gain knowledge in machine learning<br>•Specific to what client wants|•Time consuming<br>•Might not be as efficient<br>•Outside of skill set|
 ## Blender
+
 This is a summary version of the documentation we have. For a detail documentation checkout repository : "OtherNotes->Cosc499_ROSEN_C_Blender.pdf". <br>
 Blender has a few notable functionalities as stated on the Blender official website, includes : <br>
 - Animation and Rigging.
