@@ -22,5 +22,15 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 |Flask|•light-weight framework<br>•Suitable for small projects<br>•Customizable|•Does not have built-in support for basic database system<br>•Slow deployment of minimum viable product<br>•Limited community support|
 
 ## Blender
-For a detail documentation check OtherNotes->Cosc499_ROSEN_C_Blender.pdf. <br>
-In summary, 
+This is a summary version of the documentation we have. For a detail documentation check OtherNotes->Cosc499_ROSEN_C_Blender.pdf. <br>
+Blender has a few notable functionalities as stated on the Blender official website, includes :
+- Animation and Rigging.
+- Drawing 2D in 3D
+- Build your own models.
+- Python API
+
+### How to download.
+Follow the link below, any users with Windows, macOS and Linux will be able to download Blender.
+At this document of time(5 Oct 2022), Blender is at version 3.3.
+The user will download an installer first, select the file location, and proceed to download the application.
+The download link is [here](https://www.blender.org/download/).
