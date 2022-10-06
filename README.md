@@ -27,36 +27,6 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 |Google AutoML|•Easy to use|•Model train time caps at 1 hour for free users|
 |VGG16|•Easy to use|•High inference time (time for model to process new data and make predictions)|
 |Self-written|•Gain knowledge in machine learning<br>•Specific to what client wants|•Time consuming<br>•Might not be as efficient<br>•Outside of skill set|
-## Blender
-
-This is a summary version of the documentation we have. For a detail documentation checkout repository : "OtherNotes->Cosc499_ROSEN_C_Blender.pdf". <br>
-Blender has a few notable functionalities as stated on the Blender official website, includes : <br>
-- Animation and Rigging.
-- Drawing 2D in 3D
-- Build your own models.
-- Python API
-
-### How to download.
-The download link is [here](https://www.blender.org/download/). <br>
-- Follow the link below, any users with Windows, macOS and Linux will be able to download Blender. <br>
-- At this document of time(5 Oct 2022), Blender is at version 3.3. <br>
-- The user will download an installer first, select the file location, and proceed to download the application. <br>
-
-## OpenCV
-OpenCV is a computer vision and machine learning software library. We will be using this for image recognition with contextual information added. <br>
-A step-by-step tutorial of openCV with Python can be found [here](https://www.youtube.com/watch?v=WQeoO7MI0Bs&t=4152s)
-### How to download.
-#### Prerequisites
-The user will need the following : 
-- C++ compiler and build tools, Visual Studio IDE is fine.
-- Install CMaker from the official site or some other source.
-- Windows, macOS, Linux, BSD and Android.
-
-#### Download link and steps
-The download link is [here](https://github.com/opencv/opencv/releases). <br>
-- The user will download the "sourcecode.zip" from the version they desired.
-- Then, the user will need to configurate in cmd : `cmake -G<generator> <configuration-options> <source-directory>`. This command allows cmake to verify all necessary tools are avaialable and compatible, it will then generate intermediate files for the chosen build system.
-- After that, the installation will be prompted by `cmake --build <build-directory> --target install <other-options>` 
 
 ## Active Learning Algorithm
 
