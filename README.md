@@ -23,3 +23,4 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 
 ## Blender
 For a detail documentation check OtherNotes->Cosc499_ROSEN_C_Blender.pdf. <br>
+In summary, 
