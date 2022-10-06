@@ -47,5 +47,7 @@ The user will need the following :
 - Install CMaker from the official site or some other source.
 - Windows, macOS, Linux, BSD and Android.
 
-### Download link
+### Download link and steps
 The download link is [here](https://github.com/opencv/opencv/releases). <br>
+- The user will download the "sourcecode.zip" from the version they desired.
+- Then, the user will need to configurate in cmd : cmake -G<generator> <configuration-options> <source-directory>. This command allows cmake to verify all necessary tools are avaialable and compatible, it will then generate intermediate files for the chosen build system.
