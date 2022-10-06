@@ -28,6 +28,21 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 |VGG16|•Easy to use|•High inference time (time for model to process new data and make predictions)|
 |Self-written|•Gain knowledge in machine learning<br>•Specific to what client wants|•Time consuming<br>•Might not be as efficient<br>•Outside of skill set|
 
+## Blender
+
+This is a summary version of the documentation we have. For a detail documentation checkout repository : "OtherNotes->Cosc499_ROSEN_C_Blender.pdf". <br>
+Blender has a few notable functionalities as stated on the Blender official website, includes : <br>
+- Animation and Rigging.
+- Drawing 2D in 3D
+- Build your own models.
+- Python API
+
+### How to download.
+The download link is [here](https://www.blender.org/download/). <br>
+- Follow the link below, any users with Windows, macOS and Linux will be able to download Blender. <br>
+- At this document of time(5 Oct 2022), Blender is at version 3.3. <br>
+- The user will download an installer first, select the file location, and proceed to download the application. <br>
+
 ## Active Learning Algorithm
 
 ## Functional Requirement
