@@ -65,4 +65,18 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 
 ## Functional Requirement
 
+1.Web application for classification task that presents classified and to be classified images.
+1.Can upload or have the path
+1.Active learning algorithm implementation, following the principles of clean code.
+1.Source code integrated in a private source code management system (e.g. GitHub, Gitlab). Including configuration and installation documentation.
+1.Data storage system for vectors (codes) that are used by the active learning algorithm and a storage system for the images.
+1.Workflow that encodes the images from a given generated water pipeline inspection and stores the codes and images.
+1.Performance tests for the time needed for one step of the active learning process.
+1.Software architecture and technical documentation.
+1.Enhanced water pipeline inspection generator (optional).
+1.Classification performance for self-defined classification tasks (optional).
+
+
+
+
 
