@@ -26,7 +26,7 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 |---|---|---|
 |Google AutoML|•Easy to use|•Model train time caps at 1 hour for free users|
 |Keras(VGG16)|•High accuracy in image classfication|•Requires a lot of training data|
-|Keras(Resnet50)|•Faster and more accurate than VG166|•It has deeper network so requires longer training time<br>•Requires a lot of training data|
+|Keras(Resnet50)|•Faster and more accurate than VGG16|•It has deeper network so requires longer training time<br>•Requires a lot of training data|
 |SKLearn(Support Vector Machine)|•Works well with high dimensional data|•Does not perform well when there is a lot of noise in dataset|
 |Self-written|•Gain knowledge in machine learning<br>•Specific to client's need|•Time consuming<br>•Might not be as efficient<br>•Outside of skill set|
 
