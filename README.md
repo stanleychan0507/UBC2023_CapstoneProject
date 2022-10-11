@@ -83,6 +83,6 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 - For back-end, we will conduct unit tests, integration tests and journey tests with Weaviate’s built in testing features. Integration tests allow us to check if components are working together as an entity while journey tests are black-box tests that can ensure user experience is smooth and key features work as intended 
 
 ### Test plan
-- Conduct tests each time an important feature is implemented. This allows us to determine easily if the new code is a bug.
+Conduct tests each time an important feature is implemented. This allows us to determine easily if the new code is a bug.
 
 
