@@ -80,7 +80,7 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 - For front-end, we will utilize Dash’s end-to-end test and unit test. The former ensures that the user’s experience with the website is smooth, and the latter ensures that callback outputs are as expected. 
 
 ### Back-end
-- For back-end, we will conduct unit tests, integration tests and journey tests with Weaviate’s built in testing features. Integration tests allow us to check if components are working together as an entity while journey tests are black-box tests that can ensure user experience is smooth and key features work as intended 
+- For back-end, we will conduct unit tests and integration tests with pytest-flask. Integration tests allow us to check if components are working together as an entity.  
 
 ### Test plan
 Conduct tests each time an important feature is implemented. This allows us to determine easily if the new code is a bug.
