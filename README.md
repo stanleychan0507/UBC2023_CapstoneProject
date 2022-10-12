@@ -83,6 +83,6 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 - For back-end, we will conduct unit tests and integration tests with pytest-flask. Integration tests allow us to check if components are working together as an entity.  
 
 ### Test plan
-Conduct tests each time an important feature is implemented. This allows us to determine easily if the new code is a bug.
+We will conduct regression testing in our software development lifecycle to ensure that the integrity of the software is preserved. 
 
 
