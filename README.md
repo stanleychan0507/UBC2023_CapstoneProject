@@ -11,7 +11,7 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 ## Tech stack
 |Front-end|Pros|Cons|
 |---|---|---|
-|Dash (Preferred)|•Perfect for Dashboarding and data visualization<br>•Good callback debugger<br>•Highly scalable|•Does not really have any disadvantages as dash is written for data scientists|
+|Dash (Preferred)|•Perfect for Dashboarding and data visualization<br>•Good callback debugger<br>•Highly scalable|•Does not really have any disadvantages as dash is written for data scientists|•Built on top of Flask and Peact.js and Plotly.js|•All code is in python|
 |React|•Good for Dynamic web pages <br>•Components are reusable<br>•Ease of testing|•React evolves quickly<br>•Lacks proper documentation<br>•Lacking in features for a framework|
 |Vue|•Lightweight with reliable performance<br>•Good documentation<br>•Supports two-way bindings|•Lack of libraries compared to other frameworks<br>•Difficulty in scaling|
 
@@ -25,8 +25,11 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 |Algorithms|Pros|Cons|
 |---|---|---|
 |Google AutoML|•Easy to use|•Model train time caps at 1 hour for free users|
-|VGG16|•Easy to use|•High inference time (time for model to process new data and make predictions)|
-|Self-written|•Gain knowledge in machine learning<br>•Specific to what client wants|•Time consuming<br>•Might not be as efficient<br>•Outside of skill set|
+|Keras(VGG16)|•High accuracy in image classfication|•Requires a lot of training data|
+|Keras(Resnet50)|•Faster and more accurate than VGG16|•It has deeper network so requires longer training time<br>•Requires a lot of training data|
+|SKLearn(Support Vector Machine)|•Works well with high dimensional data|•Does not perform well when there is a lot of noise in dataset|
+|Self-written|•Gain knowledge in machine learning<br>•Specific to client's need|•Time consuming<br>•Might not be as efficient<br>•Outside of skill set|
+
 ## Blender
 
 This is a summary version of the documentation we have. For a detail documentation checkout repository : "OtherNotes->Cosc499_ROSEN_C_Blender.pdf". <br>
@@ -61,5 +64,25 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 ## Active Learning Algorithm
 
 ## Functional Requirement
+
+1. Web application for classification task that presents classified and to be classified images.
+1. Active learning algorithm implementation, following the principles of clean code.
+1. Source code integrated in a private source code management system (e.g. GitHub, Gitlab). Including configuration and installation documentation.
+1. Data storage system for vectors (codes) that are used by the active learning algorithm and a storage system for the images.
+1. Workflow that encodes the images from a given generated water pipeline inspection and stores the codes and images.
+1. Performance tests for the time needed for one step of the active learning process.
+1. Software architecture and technical documentation.
+1. Enhanced water pipeline inspection generator (optional).
+1. Classification performance for self-defined classification tasks (optional).
+
+## Testing
+### Front-end
+- For front-end, we will utilize Dash’s end-to-end test and unit test. The former ensures that the user’s experience with the website is smooth, and the latter ensures that callback outputs are as expected. 
+
+### Back-end
+- For back-end, we will conduct unit tests and integration tests with pytest-flask. Integration tests allow us to check if components are working together as an entity.  
+
+### Test plan
+We will conduct regression testing in our software development lifecycle to ensure that the integrity of the software is preserved. 
 
 
