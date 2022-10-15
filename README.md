@@ -79,12 +79,12 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 
 ## Non Functional Reequirments
 
-1.The system shall be quick when getting information in the data-base
-1.The system shall be able to have proper python coding standard
-1.Will be formatted with black and pylint. 
-1.Github having proper repositories.
-1.The system should be user friendly for data scientists.
-1.Providing a storyboard and negotiating with our client..
+1. The system shall be quick when getting information in the data-base
+1. The system shall be able to have proper python coding standard
+1. Will be formatted with black and pylint. 
+1. Github having proper repositories.
+1. The system should be user friendly for data scientists.
+1. Providing a storyboard and negotiating with our client..
 
 # Milstones 
 ## Milestone 1 (October 21) 
