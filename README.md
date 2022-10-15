@@ -75,6 +75,27 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 1. Enhanced water pipeline inspection generator (optional).
 1. Classification performance for self-defined classification tasks (optional).
 
+
+
+## Non Functional Reequirments
+
+1.The system shall be quick when getting information in the data-base
+1.The system shall be able to have proper python coding standard
+1.Will be formatted with black and pylint. 
+1.Github having proper repositories.
+1.The system should be user friendly for data scientists.
+1.Providing a storyboard and negotiating with our client..
+
+## Milstones 
+# Milestone 1 (October 21) 
+  Finish documentation
+# Milestone 2(December 02) 
+Finish GUI 
+# Milestone 3(February  23) 
+Functional Web Interface & Optomized Machine learning
+# Milestone 4(April  04)
+Project Refinnement
+
 ## Testing
 ### Front-end
 - For front-end, we will utilize Dash’s end-to-end test and unit test. The former ensures that the user’s experience with the website is smooth, and the latter ensures that callback outputs are as expected. 
