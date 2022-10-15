@@ -86,14 +86,14 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 1.The system should be user friendly for data scientists.
 1.Providing a storyboard and negotiating with our client..
 
-## Milstones 
-# Milestone 1 (October 21) 
+# Milstones 
+## Milestone 1 (October 21) 
   Finish documentation
-# Milestone 2(December 02) 
+## Milestone 2(December 02) 
 Finish GUI 
-# Milestone 3(February  23) 
+## Milestone 3(February  23) 
 Functional Web Interface & Optomized Machine learning
-# Milestone 4(April  04)
+## Milestone 4(April  04)
 Project Refinnement
 
 ## Testing
