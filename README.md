@@ -11,7 +11,7 @@ We also noted that the "Scrumban" method, which is a combination of Scrum and Ka
 ## Tech stack
 |Front-end|Pros|Cons|
 |---|---|---|
-|Dash (Preferred)|•Perfect for Dashboarding and data visualization<br>•Good callback debugger<br>•Highly scalable|•Does not really have any disadvantages as dash is written for data scientists|
+|Dash (Preferred)|•Perfect for Dashboarding and data visualization<br>•Good callback debugger<br>•Highly scalable|•Does not really have any disadvantages as dash is written for data scientists|•Built on top of Flask and Peact.js and Plotly.js|•All code is in python|
 |React|•Good for Dynamic web pages <br>•Components are reusable<br>•Ease of testing|•React evolves quickly<br>•Lacks proper documentation<br>•Lacking in features for a framework|
 |Vue|•Lightweight with reliable performance<br>•Good documentation<br>•Supports two-way bindings|•Lack of libraries compared to other frameworks<br>•Difficulty in scaling|
 
