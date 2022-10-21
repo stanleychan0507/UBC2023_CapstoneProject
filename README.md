@@ -66,9 +66,7 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 At this stage, we are still not entirely sure on the requirements on Active Learning Algorithm, 
 so reserach on this area becomes irrelevent as we don't know what we will be looking for.
 <br>
-Some of the previous reserach we did on active learning were VGG16,
-as it was mentioned by our client before :
-[VGG16](https://towardsdatascience.com/transfer-learning-with-vgg16-and-keras-50ea161580b4)
+Some of the previous reserach we did on active learning were [VGG16](https://towardsdatascience.com/transfer-learning-with-vgg16-and-keras-50ea161580b4)
 
 ## Functional Requirement
 
