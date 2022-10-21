@@ -68,7 +68,7 @@ so reserach on this area becomes irrelevent as we don't know what we will be loo
 <br>
 Some of the previous reserach we did on active learning were VGG16,
 as it was mentioned by our client before :
-
+[VGG16](https://towardsdatascience.com/transfer-learning-with-vgg16-and-keras-50ea161580b4)
 
 ## Functional Requirement
 
