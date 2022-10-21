@@ -62,6 +62,8 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 - After that, the installation will be prompted by `cmake --build <build-directory> --target install <other-options>` 
 
 ## Active Learning Algorithm
+(Updates on 21/10/2022) <br>
+At this stage, we are still not entirely sure on the requirements on Active Learning Algorithm, so reserach on this area becomes irrelevent as we don't know what we will be looking for.
 
 ## Functional Requirement
 
