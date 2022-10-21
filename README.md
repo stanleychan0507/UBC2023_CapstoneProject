@@ -63,7 +63,12 @@ The download link is [here](https://github.com/opencv/opencv/releases). <br>
 
 ## Active Learning Algorithm
 (Updates on 21/10/2022) <br>
-At this stage, we are still not entirely sure on the requirements on Active Learning Algorithm, so reserach on this area becomes irrelevent as we don't know what we will be looking for.
+At this stage, we are still not entirely sure on the requirements on Active Learning Algorithm, 
+so reserach on this area becomes irrelevent as we don't know what we will be looking for.
+<br>
+Some of the previous reserach we did on active learning were VGG16,
+as it was mentioned by our client before :
+
 
 ## Functional Requirement
 
