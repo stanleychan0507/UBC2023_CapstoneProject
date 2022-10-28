@@ -1,0 +1,47 @@
+.upload{
+    margin: 1rem;
+    background-color:#3c5064 ;
+    border-color:#3c5064
+}
+
+.run{
+    margin: 1rem;
+    background-color:#3c5064 ;
+    border-color: #3c5064;
+}
+
+.upload:hover{
+    background-color: #56708a;
+    border-color: #56708a;
+}
+
+.run:hover{
+    background-color: #56708a;
+    border-color: #56708a;
+}
+
+.imagebox{
+   display: flex;
+   justify-content: space-between;
+   margin-top: 5rem;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+.referencebox{
+    width: 30vw;
+    height: 40vh;
+    border: 1px solid black;
+    margin: 2rem;
+}
+
+.videobox{
+    width: 50vw;
+    height: 60vh;
+    margin: 2rem;
+    border: 1px solid black;
+}
