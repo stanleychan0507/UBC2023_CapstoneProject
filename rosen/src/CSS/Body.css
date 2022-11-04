@@ -45,3 +45,14 @@
     margin: 2rem;
     border: 1px solid black;
 }
+
+.UploadModel{
+  position: absolute ;
+  z-index: 10040;
+ 
+  
+}
+.ModalHead {
+background-color: #3c5064;
+color: White
+}
