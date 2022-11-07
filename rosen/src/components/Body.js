@@ -18,7 +18,8 @@ function Body() {
     const handleShow = () => setShow(true);
   return (
     <>
-     
+     {      //Modal dropdown upload pcitures option // 
+        } 
         <div className="buttons">
         <Button variant="primary" onClick={handleShow}>Upload</Button>
         <Button variant='primary' className='run'>Run</Button>
@@ -33,15 +34,15 @@ function Body() {
                     <h1 className='reference'>Reference Photo</h1>
                     <div className='referencebox'>
                     </div>
-                    <input type="file" id="actual-btn"/>
-                    <label for="actual-btn">Choose File</label>
+                    <input type="file" id="referencePhoto"/>
+                    <label for="referencePhoto">Choose File</label>
                      </div>
                     <div className='title'>
                     <h1 className='video'>Video</h1>
                     <div className='referencebox'>
                     </div>
-                    <input type="file" id="actual-btn"/>
-                    <label for="actual-btn">Choose File</label>
+                    <input type="file" id="VideoPhotos"/>
+                    <label for="VideoPhotos">Choose File</label>
                         </div>
             
                     </div>
