@@ -32,11 +32,16 @@
     align-items: center;
  }
 
-.referencebox{
+.referenceBox_Photo{
     width: 30vw;
     height: 40vh;
     border: 1px solid black;
     margin: 2rem;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: grey; 
 }
 
 .videobox{
@@ -55,4 +60,10 @@
 .ModalHead {
 background-color: #3c5064;
 color: White
+}
+
+.referenceBox__refPhoto{
+    display: none; 
+    width: 100%;
+
 }

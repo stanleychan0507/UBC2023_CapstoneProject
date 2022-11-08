@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -23,26 +22,36 @@ function Body() {
         <div className="buttons">
         <Button variant="primary" onClick={handleShow}>Upload</Button>
         <Button variant='primary' className='run'>Run</Button>
-  
+ 
             <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
                 <Modal.Header closeButton className='ModalHead'>
                     <Modal.Title>Upload Options</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='imagebox'>
+
+
+
                     <div className='title'>
                     <h1 className='reference'>Reference Photo</h1>
-                    <div className='referencebox'>
+
+                    <div className='referenceBox_Photo' id = ' referenceBoxPhoto'>
+                        <img src='' alt='Refernece Photo' className='referenceBox__refPhoto'/>
+                        <span className='refernceBox__defaultTextref'>Image Preview</span>
                     </div>
-                    <input type="file" id="referencePhoto"/>
-                    <label for="referencePhoto">Choose File</label>
+                    <input type="file" id="refPhoto" name = "refPhoto" accept='.png, .jpeg, .jpg'/>
+                        
                      </div>
+                    
+
                     <div className='title'>
                     <h1 className='video'>Video</h1>
-                    <div className='referencebox'>
+                    <div className='referenceBox'>
+                    <img src= "" alt = "Video reference" className='referenceBox__VideoPhoto'/>
+                    <span className='referenceBox__defaultTextVideo'>Image Preview</span>
                     </div>
-                    <input type="file" id="VideoPhotos"/>
-                    <label for="VideoPhotos">Choose File</label>
+                    <input type="file" id="videoPhoto"name = "videoPhoto" accept='.png, .jpeg, .jpg' />
+                        
                         </div>
             
                     </div>
@@ -75,10 +84,11 @@ function Body() {
             </div>
             
         </div>
+
     </>
   
   )
-
+  
 }
 
 export default Body;
