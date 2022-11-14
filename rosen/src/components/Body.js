@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
+
 function Body() {
     /*Code added to body Explination: 
     These are constant varibales before the return function: 
@@ -11,10 +12,33 @@ function Body() {
     You have your header, body , extra. In the mody is where all the magic happends.
     ***NOTE the modal and main page look very similar because eventually we will change the main page to look differently. there will not be a refernce photo on the main page *** 
     */
+
+    // this is the JS to upload the Reference Photo 
     const [show, setShow] = useState(false);
     const [fullscreen, setFullscreen] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [filep, setFilep] = useState();
+    function handleChangePhoto(e) {
+        console.log(e.target.files);
+        if(e.target.files.length!== 0){
+          setFilep(URL.createObjectURL(e.target.files[0]));  
+        }
+        document.getElementById('refernceBox__defaultTextref').style.display = 'none';
+        
+    }
+// This is the JS to upload the video 
+    const [filev, setFilev] = useState();
+    function handleChangeVideo(e) {
+        console.log(e.target.files);
+        if(e.target.files.length!== 0){
+          setFilev(URL.createObjectURL(e.target.files[0]));  
+        }
+        document.getElementById('refernceBox__defaultTextVideo').style.display = 'none';
+        
+    }
+
   return (
     <>
      {      //Modal dropdown upload pcitures option // 
@@ -30,32 +54,43 @@ function Body() {
                 <Modal.Body>
                     <div className='imagebox'>
 
-
+{ // This is the html too upload REFERENCE Photo //
+}
 
                     <div className='title'>
                     <h1 className='reference'>Reference Photo</h1>
-
-                    <div className='referenceBox_Photo' id = ' referenceBoxPhoto'>
-                        <img src='' alt='Refernece Photo' className='referenceBox__refPhoto'/>
-                        <span className='refernceBox__defaultTextref'>Image Preview</span>
-                    </div>
-                    <input type="file" id="refPhoto" name = "refPhoto" accept='.png, .jpeg, .jpg'/>
-                        
-                     </div>
+                   
+                     <div className='referenceBox_Photo' id = ' referenceBoxPhoto'>
+                      <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>   
+                    { filep && (
+                   
+                        <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' />
                     
+                    ) } 
+                    </div>
+                     <input type="file" id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
+                     </div>
 
+{
+    // this is the HTML to upload the VIDEO 
+}
                     <div className='title'>
                     <h1 className='video'>Video</h1>
-                    <div className='referenceBox'>
-                    <img src= "" alt = "Video reference" className='referenceBox__VideoPhoto'/>
-                    <span className='referenceBox__defaultTextVideo'>Image Preview</span>
+
+                    <div className='referenceBox_Video' id = 'referenceBoxVideo' >
+                    <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>  
+                       { filev && (
+                   
+                    <img src= {filev} alt = "Video reference" className='referenceBox__VideoPhoto'/>
+               
+               ) } 
                     </div>
-                    <input type="file" id="videoPhoto"name = "videoPhoto" accept='.png, .jpeg, .jpg' />
+                    <input type="file" id="videoPhoto"name = "videoPhoto"  onChange={handleChangeVideo} />
                         
                         </div>
             
                     </div>
-                    
+
                 </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>Close</Button>
@@ -74,6 +109,7 @@ function Body() {
                 </div>
                 
             </div>
+
             <div className='title'>
                 <h1 className='video'>Video</h1>
 

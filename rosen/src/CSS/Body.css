@@ -2,6 +2,7 @@
     margin: 1rem;
     background-color:#3c5064 ;
     border-color:#3c5064
+
 }
 
 .run{
@@ -32,6 +33,21 @@
     align-items: center;
  }
 
+.videobox{
+    width: 50vw;
+    height: 60vh;
+    margin: 2rem;
+    border: 1px solid black;
+}
+
+.referencebox{
+    width: 40vw;
+    height: 50vh;
+    margin: 2rem;
+    border: 1px solid black;
+}
+
+
 .referenceBox_Photo{
     width: 30vw;
     height: 40vh;
@@ -44,12 +60,7 @@
     color: grey; 
 }
 
-.videobox{
-    width: 50vw;
-    height: 60vh;
-    margin: 2rem;
-    border: 1px solid black;
-}
+
 
 .UploadModel{
   position: absolute ;
@@ -63,7 +74,25 @@ color: White
 }
 
 .referenceBox__refPhoto{
-    display: none; 
+    display: block; 
+    width: 100%;
+
+}
+
+.referenceBox_Video{
+    width: 30vw;
+    height: 40vh;
+    border: 1px solid black;
+    margin: 2rem;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: grey; 
+}
+
+.referenceBox__VideoPhoto{
+    display: block; 
     width: 100%;
 
 }
