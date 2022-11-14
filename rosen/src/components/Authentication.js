@@ -17,3 +17,5 @@ function Authentication() {
     </div>
   );
 }
+
+export default Authentication;
