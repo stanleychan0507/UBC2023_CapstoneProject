@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 
 
 
+
 function Body() {
     /*Code added to body Explination: 
     These are constant varibales before the return function: 
@@ -18,6 +19,7 @@ function Body() {
     const [fullscreen, setFullscreen] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    document.getElementById('refernceBox__defaultTextref');
 
     const [filep, setFilep] = useState();
     function handleChangePhoto(e) {
@@ -80,12 +82,13 @@ function Body() {
                     <div className='referenceBox_Video' id = 'referenceBoxVideo' >
                     <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>  
                        { filev && (
-                   
-                    <img src= {filev} alt = "Video reference" className='referenceBox__VideoPhoto'/>
+                    <video  className='referenceBox__VideoPhoto'
+                    poster=""
+                    src={filev} />
                
                ) } 
                     </div>
-                    <input type="file" id="videoPhoto"name = "videoPhoto"  onChange={handleChangeVideo} />
+                    <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} />
                         
                         </div>
             
@@ -93,6 +96,9 @@ function Body() {
 
                 </Modal.Body>
                     <Modal.Footer>
+                        {
+                            //This is the save and close button at the bottom of the Modal
+                        }
                         <Button variant="secondary" onClick={handleClose}>Close</Button>
                         <Button variant="primary" onClick={handleClose}>Save Changes</Button>
                     </Modal.Footer>
@@ -105,7 +111,7 @@ function Body() {
             <div className='title'>
                 <h1 className='reference'>Reference Photo</h1>
                 <div className='referencebox'>
-                    
+                    <img src = {filep} className='referenceBox__refPhoto' />
                 </div>
                 
             </div>

@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-script-tag": "^1.1.2"
+    "react-script-tag": "^1.1.2",
+    "video-react": "^0.16.0"
   }
 }
