@@ -8,9 +8,9 @@ import Modal from 'react-bootstrap/Modal';
 function Body() {
     /*Code added to body Explination: 
     These are constant varibales before the return function: 
-    These call a reacte function to be bale to show the modal. it is a switch almost
-    The html code calls a modal Function in react to create the modal and functions just like a normal wewbsite.
-    You have your header, body , extra. In the mody is where all the magic happends.
+    These call a reacte function to be able to show the modal. 
+    The html code calls a modal Function in react to create the modal
+    You have your header, body , extra.
     ***NOTE the modal and main page look very similar because eventually we will change the main page to look differently. there will not be a refernce photo on the main page *** 
     */
 
@@ -43,7 +43,7 @@ function Body() {
 
   return (
     <>
-     {      //Modal dropdown upload pcitures option // 
+     {      //--------------Modal Page -----------------// 
         } 
         <div className="buttons">
         <Button variant="primary" onClick={handleShow}>Upload</Button>
@@ -106,7 +106,12 @@ function Body() {
 
                      </div>
         
-        
+        {
+            //--------------This is the html of the main page ------------------------
+        }
+        {
+            //This is the Reference section of main page
+        }
         <div className='imagebox'>
             <div className='title'>
                 <h1 className='reference'>Reference Photo</h1>
@@ -115,7 +120,9 @@ function Body() {
                 </div>
                 
             </div>
-
+        {
+            //This is the Video ection of main page
+        }
             <div className='title'>
                 <h1 className='video'>Video</h1>
 
