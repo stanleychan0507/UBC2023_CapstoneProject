@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Player } from 'video-react'; // To play video // 
 
 
 
@@ -26,8 +27,9 @@ function Body() {
         console.log(e.target.files);
         if(e.target.files.length!== 0){
           setFilep(URL.createObjectURL(e.target.files[0]));  
+          document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
-        document.getElementById('refernceBox__defaultTextref').style.display = 'none';
+        
         
     }
 // This is the JS to upload the video 
