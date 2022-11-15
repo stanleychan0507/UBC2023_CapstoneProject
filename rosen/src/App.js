@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const addLoginHandler = login => {
@@ -12,6 +13,7 @@ function App() {
       <>
         <Navbar onAddLogin={addLoginHandler}/>
         <Body />
+
       </>
     )
 }
