@@ -1,16 +1,29 @@
-import React from 'react'
-import RG from "../images/RosenLogo.webp"
-import "../CSS/Navbar.css"
+import React from "react";
+import RG from "../images/RosenLogo.webp";
+import "../CSS/Navbar.css";
+import Authentication from "./Authentication/Authentication";
 
-function Navbar() {
+const Navbar = (props) => {
+  const saveLoginDataHandler = (enteredLoginData) => {
+    const loginData = {
+        ...enteredLoginData,
+        id: Math.random().toString()
+    };
+    props.onAddLogin(loginData);
+  };
+
   return (
-    <nav className="navbar">
-        <img src={RG} className="logo" alt="Rosen Group logo"/>
+    <div>
+      <nav className="navbar">
+        <img src={RG} className="logo" alt="Rosen Group logo" />
         <ul>
-            <li><a href="#">Login</a></li>
+          <li>
+            <Authentication onSaveLoginData={saveLoginDataHandler}/>
+          </li>
         </ul>
-    </nav>
-  )
+      </nav>
+    </div>
+  );
 }
 
 export default Navbar;
