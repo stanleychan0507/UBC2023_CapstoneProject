@@ -3,12 +3,15 @@ import Body from "./components/Body";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+const addLoginHandler = login => {
+  console.log("In App.js");
+  console.log(login);
+};
 
 function App() {
     return(
       <>
-        <Navbar/>
+        <Navbar onAddLogin={addLoginHandler}/>
         <Body />
 
       </>
