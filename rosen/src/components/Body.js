@@ -119,8 +119,13 @@ function Body() {
                 <h1 className='reference'>Reference Photo</h1>
                 <div className='referencebox'>
                     <img src = {filep} className='referenceBox__refPhoto' />
+                   
+                    
                 </div>
-                
+                 {
+                           //create future function to hid reference Photo as it is not needed on main page 
+                    }
+                <Button>Hide Reference Photo</Button>
             </div>
         {
             //This is the Video ection of main page
