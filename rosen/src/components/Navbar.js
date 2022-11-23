@@ -1,24 +1,17 @@
 import React from "react";
 import RG from "../images/RosenLogo.webp";
+import { Link } from "react-router-dom";
 import "../CSS/Navbar.css";
-import Authentication from "./Authentication/Authentication";
 
-const Navbar = (props) => {
-  const saveLoginDataHandler = (enteredLoginData) => {
-    const loginData = {
-        ...enteredLoginData,
-        id: Math.random().toString()
-    };
-    props.onAddLogin(loginData);
-  };
 
+const Navbar = () => {
   return (
     <div>
       <nav className="navbar">
         <img src={RG} className="logo" alt="Rosen Group logo" />
         <ul>
           <li>
-            <Authentication onSaveLoginData={saveLoginDataHandler}/>
+              <Link to="login">Login</Link>
           </li>
         </ul>
       </nav>

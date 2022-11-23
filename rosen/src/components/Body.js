@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Player } from 'video-react'; // To play video // 
-
-
-
+import Navbar from './Navbar';
 
 function Body() {
     /*Code added to body Explination: 
@@ -47,6 +44,7 @@ function Body() {
     <>
      {      //--------------Modal Page -----------------// 
         } 
+        <Navbar/>
         <div className="buttons">
         <Button variant="primary" onClick={handleShow}>Upload</Button>
         <Button variant='primary' className='run'>Run</Button>
