@@ -5,8 +5,6 @@ import "../CSS/Navbar.css";
 
 
 const Navbar = () => {
-  
- // <Authentication onSaveLoginData={saveLoginDataHandler}/>
   return (
     <div>
       <nav className="navbar">
