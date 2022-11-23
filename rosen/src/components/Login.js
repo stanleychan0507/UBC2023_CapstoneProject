@@ -24,18 +24,12 @@ function Login(props) {
         loginPW: enteredLoginPW,
         };
 
-        props.onSaveLoginData(loginData);
+        //props.onSaveLoginData(loginData);
         setLoginID("");
         setLoginPW("");
     };
-    
-    const saveLoginDataHandler = (enteredLoginData) => {
-        const loginData = {
-            ...enteredLoginData,
-            id: Math.random().toString()
-        };
-        props.onAddLogin(loginData);
-    };
+
+
 
   return (
     <>
