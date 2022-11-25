@@ -18,8 +18,8 @@ function Body() {
     const [filep, setFilep] = useState();
     const [filev, setFilev] = useState();
     const [hide, setHide] = useState(false);
-    const [currStateP,setCurrStateP]=useState();
-    const [currStateV,setCurrStateV]=useState();
+    const [currStateP,setCurrStateP]=useState(false);
+    const [currStateV,setCurrStateV]=useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -52,7 +52,7 @@ function Body() {
     function handleSave(){
         setShow(false)
         setCurrStateP(!filep)
-        setCurrStateV(!filep)
+        setCurrStateV(!filev)
     }
 
   return (
