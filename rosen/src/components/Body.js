@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -22,9 +22,9 @@ function Body() {
     const handleShow = () => setShow(true);
    
     function handleChangePhoto(e) {
-        console.log(e.target.files);
+        console.log(e.target.files[0]);
         if(e.target.files.length!== 0){
-          setFilep(URL.createObjectURL(e.target.files[0]));  
+          setFilep(URL.createObjectURL(e.target.files[0]));
           document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
     }
@@ -45,8 +45,6 @@ function Body() {
 
     //handle save
     function handleSave(){
-        setFilep(false);
-        setFilev(false);
         setShow(false)
     }
 
@@ -55,6 +53,7 @@ function Body() {
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             <Button variant='primary' className='run'>Run</Button>
+            { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
                 <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
                     <Modal.Header closeButton className='ModalHead'>
                         <Modal.Title>Upload Options</Modal.Title>
@@ -63,14 +62,14 @@ function Body() {
                         <div className='imagebox'>
                             <div className='title'>
                                 <h1 className='reference'>Reference Photo</h1>
-                                <div className='referenceBox_Photo' id = ' referenceBoxPhoto'>
+                                <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
                                     {
                                         filep ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
                                         :
                                         <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
                                     } 
                                 </div>
-                                <input type="file" id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
+                                <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
                             </div>
                             <div className='title'>
                                 <h1 className='video'>Video</h1>
@@ -92,18 +91,20 @@ function Body() {
                     </Modal.Footer>
                 </Modal>
         </div>
-        <div className='imagebox'>
-            <div className='title'>
-                <h1 className='reference'>Reference Photo</h1>
-                <div className='referencebox' style={hide ? {display: 'none'} : {display:'block'}} >
+        <div className='imagebox' style={hide ? {alignItems: 'center',justifyContent:'center'} : {}}>
+            {
+                hide ?
+                '':
+                <div className='title'> 
+                <h1 className='reference'>Reference Photo</h1> 
+                <div className='referencebox'>
                     <img src = {filep} className='referenceBox__refPhoto' />
                 </div>
-                {
-                    hide ? <Button onClick={handleHide}>Unhide Reference Photo</Button> : <Button onClick={handleHide}>Hide Reference Photo</Button> 
-                }
-                
-            </div>
-            <div className='title'>
+                    <Button className='hide' onClick={handleHide}>Hide Reference Photo</Button> 
+                </div>
+            }
+            
+        <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div className='videobox'></div>
             </div>

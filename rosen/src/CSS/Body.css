@@ -5,8 +5,19 @@
 
 }
 
+.unhide{
+    margin: 1rem;
+    background-color:#3c5064 ;
+    border-color:#3c5064
+}
+
 .run{
     margin: 1rem;
+    background-color:#3c5064 ;
+    border-color: #3c5064;
+}
+
+.hide{
     background-color:#3c5064 ;
     border-color: #3c5064;
 }
@@ -21,10 +32,20 @@
     border-color: #56708a;
 }
 
+.unhide:hover{
+    background-color: #56708a;
+    border-color: #56708a;
+}
+
+.hide:hover{
+    background-color: #56708a;
+    border-color: #56708a;
+}
+
 .imagebox{
    display: flex;
    justify-content: space-between;
-   margin-top: 5rem;
+   margin-top: 2rem;
 }
 
 .title{
