@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Navbar from './Navbar';
 
 function Body() {
     /*Code added to body Explination: 
@@ -17,6 +18,8 @@ function Body() {
     const [filep, setFilep] = useState();
     const [filev, setFilev] = useState();
     const [hide, setHide] = useState(false);
+    const [currStateP,setCurrStateP]=useState();
+    const [currStateV,setCurrStateV]=useState();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -25,6 +28,7 @@ function Body() {
         console.log(e.target.files[0]);
         if(e.target.files.length!== 0){
           setFilep(URL.createObjectURL(e.target.files[0]));
+          setCurrStateP(true)
           document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
     }
@@ -34,6 +38,7 @@ function Body() {
         console.log(e.target.files);
         if(e.target.files.length!== 0){
           setFilev(URL.createObjectURL(e.target.files[0]));  
+          setCurrStateV(true)
         }
         document.getElementById('refernceBox__defaultTextVideo').style.display = 'none';
     }
@@ -46,10 +51,15 @@ function Body() {
     //handle save
     function handleSave(){
         setShow(false)
+        setCurrStateP(!filep)
+        setCurrStateV(!filep)
     }
 
   return (
     <>
+     {      //--------------Modal Page -----------------// 
+        } 
+        <Navbar/>
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             <Button variant='primary' className='run'>Run</Button>
@@ -64,7 +74,7 @@ function Body() {
                                 <h1 className='reference'>Reference Photo</h1>
                                 <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
                                     {
-                                        filep ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
+                                        currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
                                         :
                                         <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
                                     } 
@@ -75,7 +85,7 @@ function Body() {
                                 <h1 className='video'>Video</h1>
                                 <div className='referenceBox_Video' id = 'referenceBoxVideo' >
                                     {
-                                        filev ? <video  className='referenceBox__VideoPhoto' poster="" src={filev} />
+                                        currStateV ? <video  className='referenceBox__VideoPhoto' poster="" src={filev} />
                                         :
                                         <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>
                                     } 
