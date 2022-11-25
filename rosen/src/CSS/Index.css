@@ -1,0 +1,13 @@
+/* Google Montserrat font import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* CSS components import */
+@import "./Navbar.css";
+@import "./Body.css";
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat","Sans-serif";
+}

@@ -1,0 +1,25 @@
+.logo{
+    height: auto;
+    width: auto;
+    max-height: 200px;
+    max-width: 200px;
+    
+}
+
+.navbar{
+    background-color: #3c5064;
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-end;
+}
+
+.navbar li{
+    list-style: none;
+    padding: 0 2rem;
+    color: white;
+}
+
+.navbar a{
+    color: inherit;
+    text-decoration: none;
+}
