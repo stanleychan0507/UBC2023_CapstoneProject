@@ -36,7 +36,7 @@ function Login(props) {
     <>
         
         <Form style={{ 
-        backgroundColor:"#56708a",
+        backgroundColor:"#3c5064",
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
