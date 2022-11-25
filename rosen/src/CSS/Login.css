@@ -1,7 +1,9 @@
 .mb-3{
-
+    
 }
 
 .button{
-    
+    background-color:#72A0C1;
+    color: 'white';
+    textDecoration: 'none';
 }
