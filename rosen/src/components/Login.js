@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import RG from "../images/RosenLogo.webp";
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
-
+//import from '../CSS/Login.css';
 
 function Login(props) {
     const [enteredLoginID, setLoginID] = useState("");
@@ -55,7 +55,8 @@ function Login(props) {
         </Form.Group>
         <div>
         <Button  variant='primary'  type='submit'>Submit</Button>
-        <Button  variant='primary' style={{margin:'1rem'}} type='submit'><Link style={{color: 'white', textDecoration: 'none'}}to="/">back</Link></Button>
+        <Button  variant='primary' style={{margin:'1rem'}} type='submit' className="button">
+            <Link style={{color: 'white', textDecoration: 'none'}}to="/">back</Link></Button>
         
         
         </div>
