@@ -8,12 +8,12 @@ Run the following to check if download succeed :
 ```console
 node -v
 ```
-1. [react j](https://www.geeksforgeeks.org/how-to-install-reactjs-on-windows/)\
+2. [react js](https://www.geeksforgeeks.org/how-to-install-reactjs-on-windows/)\
 Run the following at terminal :
 ```console
 npm install -g create-react-app  
 ```
-1. [react-dom](https://www.npmjs.com/package/react-dom)\
+3. [react-dom](https://www.npmjs.com/package/react-dom)\
 Run the following at terminal :
 ```console
 npm install react-router-dom
