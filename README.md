@@ -11,7 +11,7 @@ you will need to install:
 ```console
  cd ./rosen
  ```
-1. Then, to run react app, execute:
+2. Then, to run react app, execute:
 ```console
  npm start
 ```
