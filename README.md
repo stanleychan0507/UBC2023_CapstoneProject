@@ -1,5 +1,5 @@
 # Setup
-##Dowload: 
+## Dowload: 
 you will need to install: 
 1. [react j](https://www.geeksforgeeks.org/how-to-install-reactjs-on-windows/)
 1. [Node js](https://jlhernando.com/blog/how-to-install-node-for-seo/)
