@@ -2,8 +2,7 @@
 ## Dowload: 
 you will need to install: 
 1. [Node js](https://jlhernando.com/blog/how-to-install-node-for-seo/)\
-Download an installer in the following link :\
-(https://nodejs.org/en/download/)\
+Download the [node installer](https://nodejs.org/en/download/), follow the instruction.\
 Run the following to check if download succeed :
 ```console
 node -v
