@@ -15,7 +15,7 @@ npm install -g create-react-app
 3. [react-dom](https://www.npmjs.com/package/react-dom)\
 Run the following at terminal :
 ```console
-npm install react-router-dom
+npm install react-dom
 ```
 
 ## Set up 
