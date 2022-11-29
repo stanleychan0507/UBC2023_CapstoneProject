@@ -6,11 +6,12 @@ you will need to install:
 1. [react-dom](https://www.npmjs.com/package/react-dom)
 
 ## Set up 
-First change directory to rosen:
+ zgo to your terminal and naviagte to Rosen github cloned file then
+1.change directory to rosen:
 ```console
  cd ./rosen
  ```
-Then, to run react app, execute:
+1. Then, to run react app, execute:
 ```console
  npm start
 ```
