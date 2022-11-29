@@ -6,8 +6,8 @@ you will need to install:
 1. [react-dom](https://www.npmjs.com/package/react-dom)
 
 ## Set up 
- zgo to your terminal and naviagte to Rosen github cloned file then
-1.change directory to rosen:
+ go to your terminal and naviagte to Rosen github cloned file then
+1. change directory to rosen:
 ```console
  cd ./rosen
  ```
