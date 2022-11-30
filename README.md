@@ -17,6 +17,10 @@ Run the following at terminal :
 ```console
 npm install react-router-dom
 ```
+4. [react-bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
+```
+npm install react-bootstrap bootstrap
+```
 
 ## Set up 
  go to your terminal and naviagte to Rosen github cloned file then
