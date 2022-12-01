@@ -62,7 +62,6 @@ function Body() {
         <Navbar/>
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
-            <Button variant='primary' className='run'>Run</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
                 <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
                     <Modal.Header closeButton className='ModalHead'>
@@ -70,7 +69,7 @@ function Body() {
                     </Modal.Header>
                     <Modal.Body>
                         <div className='imagebox'>
-                            <div className='title'>
+                            <div className='titleModelRef'>
                                 <h1 className='reference'>Reference Photo</h1>
                                 <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
                                     {
@@ -81,7 +80,7 @@ function Body() {
                                 </div>
                                 <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
                             </div>
-                            <div className='title'>
+                            <div className='titleModelVideo'>
                                 <h1 className='video'>Video</h1>
                                 <div className='referenceBox_Video' id = 'referenceBoxVideo' >
                                     {
@@ -117,8 +116,14 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div className='videobox'></div>
-            </div>
+                <div className='countainerRun'>
+            <Button variant='primary' className='run'>Run</Button>
         </div>
+            </div>
+            
+            
+        </div>
+        
 
     </>
   )

@@ -41,7 +41,8 @@ function Login(props) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh'
+        height: '100vh',
+        color: "white"
         }} onSubmit={submitHandler}>
         <img src={RG}  style={{margin: '2rem'}} className="logo" alt="Rosen Group logo" />
         
