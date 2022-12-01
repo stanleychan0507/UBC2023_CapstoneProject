@@ -7,11 +7,6 @@ Run the following to check if download succeed :
 ```console
 node -v
 ```
-2. [react js](https://www.geeksforgeeks.org/how-to-install-reactjs-on-windows/)\
-Run the following at terminal :
-```console
-npm install -g create-react-app  
-```
 3. [react-router-dom](https://www.npmjs.com/package/react-dom)\
 Run the following at terminal :
 ```console
@@ -28,7 +23,11 @@ npm install react-bootstrap bootstrap
 ```console
  cd ./rosen
  ```
-2. Then, to run react app, execute:
+2. Make sure all the files are installed
+```
+npm install
+```
+3. Then, to run react app, execute:
 ```console
  npm start
 ```
