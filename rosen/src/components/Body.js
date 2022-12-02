@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
@@ -15,29 +15,44 @@ function Body() {
     // this is the JS to upload the Reference Photo 
     const [show, setShow] = useState(false);
     const [fullscreen, setFullscreen] = useState(true);
+    const [filep, setFilep] = useState();
+    const [filev, setFilev] = useState();
+    const [hide, setHide] = useState(false);
+    const [currStateP,setCurrStateP]=useState(false);
+    const [currStateV,setCurrStateV]=useState(false);
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    document.getElementById('refernceBox__defaultTextref');
-
-    const [filep, setFilep] = useState();
+   
     function handleChangePhoto(e) {
-        console.log(e.target.files);
+        console.log(e.target.files[0]);
         if(e.target.files.length!== 0){
-          setFilep(URL.createObjectURL(e.target.files[0]));  
+          setFilep(URL.createObjectURL(e.target.files[0]));
+          setCurrStateP(true)
           document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
-        
-        
     }
-// This is the JS to upload the video 
-    const [filev, setFilev] = useState();
+
+    // This is the JS to upload the video 
     function handleChangeVideo(e) {
         console.log(e.target.files);
         if(e.target.files.length!== 0){
           setFilev(URL.createObjectURL(e.target.files[0]));  
+          setCurrStateV(true)
         }
         document.getElementById('refernceBox__defaultTextVideo').style.display = 'none';
-        
+    }
+
+    // hide and unhide refence box
+    function handleHide(){
+        setHide(curr => !curr)
+    }
+
+    //handle save
+    function handleSave(){
+        setShow(false)
+        setCurrStateP(!filep)
+        setCurrStateV(!filev)
     }
 
   return (
@@ -46,103 +61,72 @@ function Body() {
         } 
         <Navbar/>
         <div className="buttons">
-        <Button variant="primary" onClick={handleShow}>Upload</Button>
-        <Button variant='primary' className='run'>Run</Button>
- 
-            <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
-                <Modal.Header closeButton className='ModalHead'>
-                    <Modal.Title>Upload Options</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div className='imagebox'>
-
-{ // This is the html too upload REFERENCE Photo //
-}
-
-                    <div className='title'>
-                    <h1 className='reference'>Reference Photo</h1>
-                   
-                     <div className='referenceBox_Photo' id = ' referenceBoxPhoto'>
-                      <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>   
-                    { filep && (
-                   
-                        <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' />
-                    
-                    ) } 
-                    </div>
-                     <input type="file" id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
-                     </div>
-
-{
-    // this is the HTML to upload the VIDEO 
-}
-                    <div className='title'>
-                    <h1 className='video'>Video</h1>
-
-                    <div className='referenceBox_Video' id = 'referenceBoxVideo' >
-                    <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>  
-                       { filev && (
-                    <video  className='referenceBox__VideoPhoto'
-                    poster=""
-                    src={filev} />
-               
-               ) } 
-                    </div>
-                    <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} />
-                        
+            <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
+            { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
+                <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
+                    <Modal.Header closeButton className='ModalHead'>
+                        <Modal.Title>Upload Options</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className='imagebox'>
+                            <div className='titleModelRef'>
+                                <h1 className='reference'>Reference Photo</h1>
+                                <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
+                                    {
+                                        currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
+                                        :
+                                        <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
+                                    } 
+                                </div>
+                                <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
+                            </div>
+                            <div className='titleModelVideo'>
+                                <h1 className='video'>Video</h1>
+                                <div className='referenceBox_Video' id = 'referenceBoxVideo' >
+                                    {
+                                        currStateV ? <video  className='referenceBox__VideoPhoto' poster="" src={filev} />
+                                        :
+                                        <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>
+                                    } 
+                                </div>
+                                <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
+                            </div>
                         </div>
-            
-                    </div>
-
-                </Modal.Body>
+                    </Modal.Body>
                     <Modal.Footer>
-                        {
-                            //This is the save and close button at the bottom of the Modal
-                        }
+                        
                         <Button variant="secondary" onClick={handleClose}>Close</Button>
-                        <Button variant="primary" onClick={handleClose}>Save Changes</Button>
+                        <Button variant="primary" onClick={handleSave}>Save Changes</Button>
                     </Modal.Footer>
-            </Modal>
-
-                     </div>
-        
-        {
-            //--------------This is the html of the main page ------------------------
-        }
-        {
-            //This is the Reference section of main page
-        }
-        <div className='imagebox'>
-            <div className='title'>
-                <h1 className='reference'>Reference Photo</h1>
+                </Modal>
+        </div>
+        <div className='imagebox' style={hide ? {alignItems: 'center',justifyContent:'center'} : {}}>
+            {
+                hide ?
+                '':
+                <div className='title'> 
+                <h1 className='reference'>Reference Photo</h1> 
                 <div className='referencebox'>
                     <img src = {filep} className='referenceBox__refPhoto' />
-                   
-                    
                 </div>
-                 {
-                           //create future function to hid reference Photo as it is not needed on main page 
-                    }
-                <Button>Hide Reference Photo</Button>
-            </div>
-        {
-            //This is the Video ection of main page
-        }
-            <div className='title'>
+                    <Button className='hide' onClick={handleHide}>Hide Reference Photo</Button> 
+                </div>
+            }
+            
+        <div className='title'>
                 <h1 className='video'>Video</h1>
-
-                <div className='videobox'>
-                    
-                </div>
-                
+                <div className='videobox'></div>
+                <div className='countainerRun'>
+            <Button variant='primary' className='run'>Run</Button>
+        </div>
             </div>
             
+            
         </div>
+        
 
     </>
-  
   )
-  
 }
 
 export default Body;

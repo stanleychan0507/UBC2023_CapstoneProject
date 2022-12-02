@@ -5,8 +5,32 @@
 
 }
 
-.run{
+.unhide{
     margin: 1rem;
+    background-color:#3c5064 ;
+    border-color:#3c5064
+}
+
+.run{
+    margin: auto; 
+    background-color:#3c5064 ;
+    border-color: #3c5064;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+
+.countainerRun{
+    position: relative;
+
+   
+}
+
+
+.hide{
     background-color:#3c5064 ;
     border-color: #3c5064;
 }
@@ -21,10 +45,20 @@
     border-color: #56708a;
 }
 
+.unhide:hover{
+    background-color: #56708a;
+    border-color: #56708a;
+}
+
+.hide:hover{
+    background-color: #56708a;
+    border-color: #56708a;
+}
+
 .imagebox{
    display: flex;
    justify-content: space-between;
-   margin-top: 5rem;
+   margin-top: 2rem;
 }
 
 .title{
@@ -36,7 +70,10 @@
 .videobox{
     width: 50vw;
     height: 60vh;
-    margin: 2rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right:2rem; 
+    margin-bottom: 1rem;
     border: 1px solid black;
 }
 
@@ -80,6 +117,20 @@ color: White
     margin-right: auto;
 
 }
+
+.titleModelRef{
+    display: flex;
+    margin-left: 6rem; 
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .titleModelVideo{
+    display: flex;
+    margin-right: 6rem; 
+    flex-direction: column;
+    align-items: center;
+ }
 
 .referenceBox_Video{
     width: 30vw;

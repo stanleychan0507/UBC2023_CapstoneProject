@@ -36,12 +36,13 @@ function Login(props) {
     <>
         
         <Form style={{ 
-        backgroundColor:"#56708a",
+        backgroundColor:"#3c5064",
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh'
+        height: '100vh',
+        color: "white"
         }} onSubmit={submitHandler}>
         <img src={RG}  style={{margin: '2rem'}} className="logo" alt="Rosen Group logo" />
         
