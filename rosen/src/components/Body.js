@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
+import axios from 'axios'
 
 function Body() {
     /*Code added to body Explination: 
@@ -48,12 +49,22 @@ function Body() {
         setHide(curr => !curr)
     }
 
-    //handle save
-    function handleSave(){
+    //handle uploaded documents
+    function handleUpload(){
+        const data = new FormData()
+        data.append('photo',filep)
+        data.append('video',filev)
+        axios.post('http://127.0.0.1:5000/api/upload', data)
+        .then(res => {
+            console.log(res)
+        })
+       
         setShow(false)
         setCurrStateP(!filep)
         setCurrStateV(!filev)
     }
+
+
 
   return (
     <>
@@ -96,7 +107,7 @@ function Body() {
                     <Modal.Footer>
                         
                         <Button variant="secondary" onClick={handleClose}>Close</Button>
-                        <Button variant="primary" onClick={handleSave}>Save Changes</Button>
+                        <Button variant="primary" onClick={handleUpload}>Save Changes</Button>
                     </Modal.Footer>
                 </Modal>
         </div>
