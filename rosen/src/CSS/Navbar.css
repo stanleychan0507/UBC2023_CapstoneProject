@@ -26,5 +26,16 @@
 
 .help {
     margin-right: 1rem; 
+    background-color:#3c5064 ;
+    border-color:#3c5064
+}
+
+.helpHead {
+    background-color: #3c5064;
+    color: White
+    }
+.ProjectTitle{
+
+    color: white ; 
 
 }

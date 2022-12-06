@@ -57,12 +57,15 @@ function Body() {
 
   return (
     <>
-     {      //--------------Modal Page -----------------// 
-        } 
+     
         <Navbar/>
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
+
+            
+            {      //--------------Modal Page -----------------// 
+        } 
                 <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
                     <Modal.Header closeButton className='ModalHead'>
                         <Modal.Title>Upload Options</Modal.Title>
