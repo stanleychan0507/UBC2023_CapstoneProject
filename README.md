@@ -16,7 +16,7 @@ docker-compose up
 ```
 Front-end will be located at `localhost:3000` and Back-end at `localhost:5000`
 
-For subsequent start ups of docker after initial set up simply execute:
+* For subsequent start ups of docker after initial set up simply execute:
 
 ```console
 docker-compose up
