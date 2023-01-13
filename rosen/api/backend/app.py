@@ -3,20 +3,20 @@ from flask import Flask, request
 from flask_cors import CORS
 
 
-api = Flask(__name__)
-cors = CORS(api)
+app = Flask(__name__)
+cors = CORS(app)
 
 UPLOAD_PHOTOS = './photos'
 UPLOAD_VIDEOS = './videos'
-api.config['UPLOAD_PHOTOS'] = UPLOAD_PHOTOS
-api.config['UPLOAD_VIDEOS'] = UPLOAD_VIDEOS
+app.config['UPLOAD_PHOTOS'] = UPLOAD_PHOTOS
+app.config['UPLOAD_VIDEOS'] = UPLOAD_VIDEOS
 
-@api.route('/')
+@app.route('/')
 def index():
     return {"greetings":"hello world"}
 
 
-@api.route('/api/upload', methods=['GET','POST'])
+@app.route('/api/upload', methods=['GET','POST'])
 def upload():
     if request.method == 'POST':
         photo = request.files['photo']
@@ -26,4 +26,4 @@ def upload():
         return "Image has been successfully uploaded"
 
 if __name__ == "__main__":
-    api.run(debug=True)
+    app.run(debug=True)
