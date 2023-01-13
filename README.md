@@ -1,33 +1,23 @@
-# Setup
-## Dowload: 
-you will need to install: 
-1. [Node js](https://jlhernando.com/blog/how-to-install-node-for-seo/)\
-Download the [node installer](https://nodejs.org/en/download/), follow the instruction.\
-Run the following to check if download succeed :
-```console
-node -v
-```
-3. [react-router-dom](https://www.npmjs.com/package/react-dom)\
-Run the following at terminal :
-```console
-npm install react-router-dom
-```
-4. [react-bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
-```
-npm install react-bootstrap bootstrap
-```
+## Setup
 
-## Set up 
- go to your terminal and naviagte to Rosen github cloned file then
-1. change directory to rosen:
+For first time setup, please install `Docker Desktop` on your system. 
+
+Next, go to the root directory of the project which is the rosen folder. Then, execute:
+
 ```console
- cd ./rosen
- ```
-2. Make sure all the files are installed
+docker-compose build
 ```
-npm install
-```
-3. Then, to run react app, execute:
+Note: For first time set up the process of building is quite slow
+
+When building is done execute:
+
 ```console
- npm start
+docker-compose up
+```
+Front-end will be located at `localhost:3000` and Back-end at `localhost:5000`
+
+For subsequent start ups of docker after initial set up simply execute:
+
+```console
+docker-compose up
 ```
