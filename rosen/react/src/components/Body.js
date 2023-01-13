@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
+import axios from 'axios'
 
 function Body() {
     /*Code added to body Explination: 
@@ -17,6 +18,8 @@ function Body() {
     const [fullscreen, setFullscreen] = useState(true);
     const [filep, setFilep] = useState();
     const [filev, setFilev] = useState();
+    const [uploadP, setUploadP] = useState();
+    const [upLoadV, setUploadV] = useState();
     const [hide, setHide] = useState(false);
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
@@ -28,6 +31,7 @@ function Body() {
         console.log(e.target.files[0]);
         if(e.target.files.length!== 0){
           setFilep(URL.createObjectURL(e.target.files[0]));
+          setUploadP(e.target.files[0])
           setCurrStateP(true)
           document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
@@ -38,6 +42,7 @@ function Body() {
         console.log(e.target.files);
         if(e.target.files.length!== 0){
           setFilev(URL.createObjectURL(e.target.files[0]));  
+          setUploadV(e.target.files[0])
           setCurrStateV(true)
         }
         document.getElementById('refernceBox__defaultTextVideo').style.display = 'none';
@@ -48,12 +53,23 @@ function Body() {
         setHide(curr => !curr)
     }
 
-    //handle save
-    function handleSave(){
+    //handle uploaded documents
+    function handleUpload(e){
+        e.preventDefault()
+        const data = new FormData()
+        data.append('photo',uploadP)
+        data.append('video',upLoadV)
+        axios.post('/api/upload', data)
+        .then(res => {
+            console.log(res)
+        })
+       
         setShow(false)
         setCurrStateP(!filep)
         setCurrStateV(!filev)
     }
+
+
 
   return (
     <>
@@ -68,35 +84,38 @@ function Body() {
                         <Modal.Title>Upload Options</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <div className='imagebox'>
-                            <div className='titleModelRef'>
-                                <h1 className='reference'>Reference Photo</h1>
-                                <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
-                                    {
-                                        currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
-                                        :
-                                        <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
-                                    } 
+                        <form onSubmit={handleUpload} id='uploads'>
+                            <div className='imagebox'>
+                                <div className='titleModelRef'>
+                                    <h1 className='reference'>Reference Photo</h1>
+                                    <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
+                                        {
+                                            currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
+                                            :
+                                            <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
+                                        } 
+                                    </div>
+                                    <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
                                 </div>
-                                <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
-                            </div>
-                            <div className='titleModelVideo'>
-                                <h1 className='video'>Video</h1>
-                                <div className='referenceBox_Video' id = 'referenceBoxVideo' >
-                                    {
-                                        currStateV ? <video  className='referenceBox__VideoPhoto' poster="" src={filev} />
-                                        :
-                                        <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>
-                                    } 
+                                <div className='titleModelVideo'>
+                                    <h1 className='video'>Video</h1>
+                                    <div className='referenceBox_Video' id = 'referenceBoxVideo' >
+                                        {
+                                            currStateV ? <video  className='referenceBox__VideoPhoto' poster="" src={filev} />
+                                            :
+                                            <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>
+                                        } 
+                                    </div>
+                                    <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
                                 </div>
-                                <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
                             </div>
-                        </div>
+                        </form>
+                
                     </Modal.Body>
                     <Modal.Footer>
                         
                         <Button variant="secondary" onClick={handleClose}>Close</Button>
-                        <Button variant="primary" onClick={handleSave}>Save Changes</Button>
+                        <Button variant="primary" type="submit" form='uploads'>Save Changes</Button>
                     </Modal.Footer>
                 </Modal>
         </div>
