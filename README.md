@@ -2,14 +2,14 @@
 
 For first time setup, please install `Docker Desktop` on your system. 
 
-Next, go to the root directory of the project which is the rosen folder. Then, execute:
+Next, open your terminal and navigate to the root directory of the project(rosen folder). Then, execute:
 
 ```console
 docker-compose build
 ```
 Note: For first time set up the process of building is quite slow
 
-When building is done execute:
+When set up is complete, execute:
 
 ```console
 docker-compose up
