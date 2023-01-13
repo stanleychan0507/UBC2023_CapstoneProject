@@ -2,7 +2,7 @@ FROM python:3
 
 WORKDIR /app/flask
 
-ENV FLASK_APP=api.py
+ENV FLASK_APP=app.py
 
 COPY requirements.txt /app/flask
 
@@ -14,4 +14,4 @@ EXPOSE 5000
 
 ENTRYPOINT [ "python" ]
 
-CMD [ "api.py" ]
+CMD [ "app.py" ]
