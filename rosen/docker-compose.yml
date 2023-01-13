@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+
+  flask:
+    build: ./flask
+    container_name: flask
+    restart: always
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./flask:/app/flask/
+  
+  react:
+    build: ./react
+    container_name: react
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./react:/app/react/
+    depends_on:
+      - flask

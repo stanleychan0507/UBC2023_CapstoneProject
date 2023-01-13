@@ -1,43 +1,33 @@
-# Setup
-## Dowload: 
-you will need to install: 
-1. [Node js](https://jlhernando.com/blog/how-to-install-node-for-seo/)\
-Download the [node installer](https://nodejs.org/en/download/), follow the instruction.\
-Run the following to check if download succeed :
+## Setup
+
+For first time setup, please first install `Docker Desktop` on your system. 
+
+Next, open your terminal and navigate to the root directory of the project(rosen folder). Then, execute:
+
 ```console
-node -v
+docker-compose build
 ```
-3. [react-router-dom](https://www.npmjs.com/package/react-dom)\
-Run the following at terminal :
+Note: For first time set up the process of building is quite slow
+
+When set up is complete, execute:
+
 ```console
-npm install react-router-dom
+docker-compose up
 ```
-4. [react-bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
-```
-npm install react-bootstrap bootstrap
+Front-end will be located at `localhost:3000` and Back-end at `localhost:5000`
+
+For subsequent start ups of docker after initial set up simply execute:
+
+```console
+docker-compose up
 ```
 ## For the AI
-5. [Pandas](https://pypi.org/project/pandas/)
+1. [Pandas](https://pypi.org/project/pandas/)
 ```console
 pip install pandas
 ```
 
-6. [SKlearn](https://scikit-learn.org/stable/install.html)
+1. [SKlearn](https://scikit-learn.org/stable/install.html)
 ```console
 pip install -U scikit-learn
-```
-
-## Set up 
- go to your terminal and naviagte to Rosen github cloned file then
-1. change directory to rosen:
-```console
- cd ./rosen
- ```
-2. Make sure all the files are installed
-```
-npm install
-```
-3. Then, to run react app, execute:
-```console
- npm start
 ```
