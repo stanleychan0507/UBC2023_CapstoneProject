@@ -16,6 +16,16 @@ npm install react-router-dom
 ```
 npm install react-bootstrap bootstrap
 ```
+## For the AI
+5. [Pandas](https://pypi.org/project/pandas/)
+```console
+pip install pandas
+```
+
+6. [SKlearn](https://scikit-learn.org/stable/install.html)
+```console
+pip install -U scikit-learn
+```
 
 ## Set up 
  go to your terminal and naviagte to Rosen github cloned file then
