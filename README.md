@@ -1,6 +1,6 @@
 ## Setup
 
-For first time setup, please install `Docker Desktop` on your system. 
+For first time setup, please first install `Docker Desktop` on your system. 
 
 Next, open your terminal and navigate to the root directory of the project(rosen folder). Then, execute:
 
