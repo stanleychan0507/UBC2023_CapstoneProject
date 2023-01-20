@@ -24,3 +24,17 @@ pickle.dump(regressor, open('model.pkl','wb'))
 model = pickle.load(open('model.pkl','rb'))
 print(model.predict([[2.6, 8, 10.1]]))
 '''
+
+'''
+# Importing the proper classes
+from DeepImageSearch import Index,LoadData,SearchImage
+
+# load the Images from the Folder (You can also import data from multiple folders in python list type)
+image_list = LoadData().from_folder(["movietest"])
+
+# For Faster Serching we need to index Data first, After Indexing all the meta data stored on the local path
+Index(image_list).Start()
+
+# for searching, you need to give the image path and the number of the similar image you want
+print(SearchImage().get_similar_images(image_path="jeep.jpg",number_of_images=5))
+'''
