@@ -21,13 +21,18 @@ For subsequent start ups of docker after initial set up simply execute:
 ```console
 docker-compose up
 ```
-## For the AI
-1. [Pandas](https://pypi.org/project/pandas/)
-```console
-pip install pandas
-```
+## For AI
+To use out AI you will nedd to update vs code to include C++ package. More information can be found on the git repository.  <br>
+git repo: https://github.com/TechyNilesh/DeepImageSearch.git
 
-1. [SKlearn](https://scikit-learn.org/stable/install.html)
-```console
-pip install -U scikit-learn
-```
+
+
+
+
+
+
+
+
+
+
+
