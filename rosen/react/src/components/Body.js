@@ -59,7 +59,7 @@ function Body() {
         const data = new FormData()
         data.append('photo',uploadP)
         data.append('video',upLoadV)
-        axios.post('/app/upload', data)
+        axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
             console.log(res)
         })
