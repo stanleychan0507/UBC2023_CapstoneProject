@@ -26,7 +26,7 @@ def upload():
         photo.save(os.path.join(app.config['UPLOAD_PHOTOS'],photo.filename)) #here
         video.save(os.path.join(app.config['UPLOAD_VIDEOS'],video.filename))
         split(UPLOAD_VIDEOS+video.filename)
-        find_sim()
+        #find_sim()
         return "Image has been successfully uploaded"
         
 
