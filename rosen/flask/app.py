@@ -1,15 +1,15 @@
 import os
-from flask import Flask,request
+from flask import Flask,request,jsonify
 from flask_cors import CORS
 from imageSplit import split
 from dpimgsrch import find_sim
-import time
+
 
 app = Flask(__name__)
 CORS(app)
 
 
-UPLOAD_PHOTOS = './assets/photos' #here
+UPLOAD_PHOTOS = './assets/photos/' #here
 UPLOAD_VIDEOS = './assets/videos/'
 app.config['UPLOAD_PHOTOS'] = UPLOAD_PHOTOS #here
 app.config['UPLOAD_VIDEOS'] = UPLOAD_VIDEOS
@@ -26,8 +26,8 @@ def upload():
         photo.save(os.path.join(app.config['UPLOAD_PHOTOS'],photo.filename)) #here
         video.save(os.path.join(app.config['UPLOAD_VIDEOS'],video.filename))
         split(UPLOAD_VIDEOS+video.filename)
-        #find_sim()
-        return "Image has been successfully uploaded"
+       
+        return ({"hello":find_sim() }) ; 
         
 
 
