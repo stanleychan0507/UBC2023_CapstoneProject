@@ -19,7 +19,6 @@ regressor.fit(x, y)
 # Pickle serializes objects so they can be saved to a file, and loaded in a program again later on.
 pickle.dump(regressor, open('model.pkl','wb'))
 
-# some code here
 '''
 #Loading model to compare the results
 model = pickle.load(open('model.pkl','rb'))
