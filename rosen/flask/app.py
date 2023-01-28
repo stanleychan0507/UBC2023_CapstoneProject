@@ -1,5 +1,5 @@
 import os
-from flask import Flask,request,jsonify
+from flask import Flask,request
 from flask_cors import CORS
 from imageSplit import split
 from dpimgsrch import find_sim
