@@ -1,5 +1,9 @@
 import cv2 
 import os
+
+
+
+
 #this will cut the photos
 def split(filename):
     cap = cv2.VideoCapture(filename)
