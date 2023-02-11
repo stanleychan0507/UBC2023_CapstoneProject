@@ -7,8 +7,8 @@ import axios from 'axios'
 function Body() {
     /*Code added to body Explination: 
     These are constant varibales before the return function: 
-    These call a reacte function to be able to show the modal. 
-    The html code calls a modal Function in react to create the modal
+    These call a reacte function to be able to show the model. 
+    The html code calls a model Function in react to create the modal
     You have your header, body , extra.
     ***NOTE the modal and main page look very similar because eventually we will change the main page to look differently. there will not be a refernce photo on the main page *** 
     */
@@ -53,7 +53,7 @@ function Body() {
         setHide(curr => !curr)
     }
 
-    //handle uploaded documents
+    //handle uploaded documents and calls backend to find similar images
     function handleUpload(e){
         e.preventDefault()
         const data = new FormData()
