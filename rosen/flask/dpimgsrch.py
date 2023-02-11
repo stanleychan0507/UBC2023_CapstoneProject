@@ -3,7 +3,7 @@ from DeepImageSearch import Index,LoadData,SearchImage
 import os 
 import json
 '''
-This method imports the API DeepImageSearch.
+This method imports the API DeepImageSearch. (For more information on DeepImageSearch Go to it github @DeepImageSearch)
 1.DeepImageSearch will find a list of images in a folder
 2.Create and Index for the images (using annoy creates a vector index)
 3. using a refence photo searches through  the index and finds all images similar to the reference photo and puts it in an array
