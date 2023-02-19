@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
 import axios from 'axios'
+import { Form } from 'react-bootstrap/lib/Navbar';
 
 function Body() {
     /*Code added to body Explination: 
@@ -54,19 +55,25 @@ function Body() {
     }
 
     //handle uploaded documents and calls backend to find similar images
-    function handleUpload(e){
+    function handleForumUpload(e){
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
         data.append('video',upLoadV)
-        axios.post('http://localhost:5000/app/upload/', data)
-        .then(res => {
-            console.log(res)
-        })
-       
         setShow(false)
         setCurrStateP(!filep)
         setCurrStateV(!filev)
+    }
+
+    function handleGetSimilarImages (e){
+        e.preventDefault(); 
+        const form = document.getElementById("uplaods"); 
+        const forumData = new FormData(form); 
+        axios.post('http://localhost:5000/app/upload/', forumData)
+        .then(res => {
+            console.log(res)
+        })
+
     }
 
     
@@ -89,7 +96,7 @@ function Body() {
                         <Modal.Title>Upload Options</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form onSubmit={handleUpload} id='uploads'>
+                        <form onSubmit={handleForumUpload} id='uploads'>
                             <div className='imagebox'>
                                 <div className='titleModelRef'>
                                     <h1 className='reference'>Reference Photo</h1>
@@ -141,7 +148,7 @@ function Body() {
                 <h1 className='video'>Video</h1>
                 <div className='videobox'></div>
                 <div className='countainerRun'>
-            <Button variant='primary' className='run'>Run</Button>
+            <Button onClick = {handleGetSimilarImages} variant='primary' className='run'>Run</Button>
         </div>
             </div>
             
