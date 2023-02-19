@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
 import axios from 'axios'
-import { Form } from 'react-bootstrap/lib/Navbar';
 
 function Body() {
     /*Code added to body Explination: 
@@ -55,25 +54,19 @@ function Body() {
     }
 
     //handle uploaded documents and calls backend to find similar images
-    function handleForumUpload(e){
+    function handleUpload(e){
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
         data.append('video',upLoadV)
-        setShow(false)
-        setCurrStateP(!filep)
-        setCurrStateV(!filev)
-    }
-
-    function handleGetSimilarImages (e){
-        e.preventDefault(); 
-        const form = document.getElementById("uplaods"); 
-        const forumData = new FormData(form); 
-        axios.post('http://localhost:5000/app/upload/', forumData)
+        axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
             console.log(res)
         })
-
+       
+        setShow(false)
+        setCurrStateP(!filep)
+        setCurrStateV(!filev)
     }
 
     
@@ -96,7 +89,7 @@ function Body() {
                         <Modal.Title>Upload Options</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form onSubmit={handleForumUpload} id='uploads'>
+                        <form onSubmit={handleUpload} id='uploads'>
                             <div className='imagebox'>
                                 <div className='titleModelRef'>
                                     <h1 className='reference'>Reference Photo</h1>
@@ -148,7 +141,7 @@ function Body() {
                 <h1 className='video'>Video</h1>
                 <div className='videobox'></div>
                 <div className='countainerRun'>
-            <Button onClick = {handleGetSimilarImages} variant='primary' className='run'>Run</Button>
+            <Button variant='primary' className='run'>Run</Button>
         </div>
             </div>
             
