@@ -54,7 +54,23 @@ function Body() {
     }
 
     //handle uploaded documents and calls backend to find similar images
-    function handleUpload(e){
+    function handleSaveChanges(e){
+        e.preventDefault()
+        setShow(false)
+        handleClose();
+    }
+
+    function handleCloseModal(){
+        setFilep(null);
+        setUploadP(null);
+        setFilev(null);
+        setUploadV(null);
+        handleClose();
+        setCurrStateP(false);
+        setCurrStateV(false);
+    }
+
+    function RunProgram(e) {
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
@@ -63,10 +79,6 @@ function Body() {
         .then(res => {
             console.log(res)
         })
-       
-        setShow(false)
-        setCurrStateP(!filep)
-        setCurrStateV(!filev)
     }
 
     
@@ -89,7 +101,6 @@ function Body() {
                         <Modal.Title>Upload Options</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form onSubmit={handleUpload} id='uploads'>
                             <div className='imagebox'>
                                 <div className='titleModelRef'>
                                     <h1 className='reference'>Reference Photo</h1>
@@ -114,13 +125,11 @@ function Body() {
                                     <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
                                 </div>
                             </div>
-                        </form>
-                
                     </Modal.Body>
                     <Modal.Footer>
                         
-                        <Button variant="secondary" onClick={handleClose}>Close</Button>
-                        <Button variant="primary" type="submit" form='uploads'>Save Changes</Button>
+                        <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
+                        <Button variant="primary" onClick= {handleSaveChanges} >Save Changes</Button>
                     </Modal.Footer>
                 </Modal>
         </div>
@@ -141,7 +150,7 @@ function Body() {
                 <h1 className='video'>Video</h1>
                 <div className='videobox'></div>
                 <div className='countainerRun'>
-            <Button variant='primary' className='run'>Run</Button>
+            <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
             
