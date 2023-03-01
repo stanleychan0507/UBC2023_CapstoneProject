@@ -1,8 +1,11 @@
 import os
-from flask import Flask,request
+from flask import Flask,request, url_for
 from flask_cors import CORS
 from imageSplit import split
 from dpimgsrch import find_sim
+from encode import get_encoded_img 
+import json
+
 
 '''
 This is the main branch where we call all the functions we have made 
@@ -16,12 +19,12 @@ UPLOAD_PHOTOS = './assets/photos/' #here
 UPLOAD_VIDEOS = './assets/videos/'
 app.config['UPLOAD_PHOTOS'] = UPLOAD_PHOTOS #here
 app.config['UPLOAD_VIDEOS'] = UPLOAD_VIDEOS
+
 #Test function to see if react is working.. will not need in future
-@app.route('/')
-def index():
-    return {"greetings":"hello world"}
+
 #This funcnction is requested from front end. This is where photos are cut up  indexed and similar images are found
 @app.route('/app/upload/', methods=['POST'])
+
 def upload():
     if request.method == 'POST':
         #requests files
@@ -29,11 +32,19 @@ def upload():
         video = request.files['video']
         photo.save(os.path.join(app.config['UPLOAD_PHOTOS'],photo.filename)) #here
         video.save(os.path.join(app.config['UPLOAD_VIDEOS'],video.filename))
-        #images are split
-        split(UPLOAD_VIDEOS+video.filename)
-       #similar images is called and send to front end
-        return ({"hello":find_sim() }) ; 
-        
+        #split(UPLOAD_VIDEOS+video.filename)
+        response = json.dumps(get_encoded_img("./assets/photos/jeep.jpg"))
+        # Enable Access-Control-Allow-Origin
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return (response) ; 
+
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 
 
 if __name__ == "__main__":

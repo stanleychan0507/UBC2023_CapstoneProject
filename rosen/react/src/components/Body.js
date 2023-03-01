@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { createElement, useEffect, useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
 import axios from 'axios'
+import ReactDOM from 'react-dom/client'
+
+
+
+
 
 function Body() {
     /*Code added to body Explination: 
@@ -36,7 +41,7 @@ function Body() {
           document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
     }
-
+   
     // This is the JS to upload the video 
     function handleChangeVideo(e) {
         console.log(e.target.files);
@@ -69,22 +74,58 @@ function Body() {
         setCurrStateP(false);
         setCurrStateV(false);
     }
+    
 
     function RunProgram(e) {
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
         data.append('video',upLoadV)
+        
+      // createDiv(); 
+          
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
-            console.log(res)
+            console.log(res);
+
+            // const root = ReactDOM.createRoot(
+            //     document.getElementById('videobox')
+            //   );
+            //  const el= React.createElement("img", {className:"test",src:string}, null );
+            //  root.render(el)
+             
         })
     }
 
+
+    function createDiv(length, imgsrc) {
+        const root = ReactDOM.createRoot(
+            document.getElementById('videobox')
+          );
+         
+          const list = createImg(length,imgsrc)
+          const listItems = list.map((list, index) =>
+          <span key = {index}>{list}</span>  
+          );
+          CreateEl(listItems); 
+          function CreateEl(list){
+            const element = React.createElement("div", {id:"SimImg"}, list); 
+            root.render(element)
+          }
+
+          function createImg(num, imgsrc){
+            var Arraylist = []
+            for(var i = 0; i < num; i++){
+                var place = imgsrc[i].substr(1);
+                var palcsrcimg = "/flask/" + place; 
+                Arraylist[i] =  React.createElement("img", {className:"test",src:"/jeep.jpg"}, null );
+            }
+            return Arraylist;
+          }
+          
+          
+    }
     
-
-
-
   return (
     <>
      
@@ -148,7 +189,9 @@ function Body() {
             
         <div className='title'>
                 <h1 className='video'>Video</h1>
-                <div className='videobox'></div>
+                <div id='videobox'>
+                
+                </div>
                 <div className='countainerRun'>
             <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>

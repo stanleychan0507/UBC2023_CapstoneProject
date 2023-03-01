@@ -2,6 +2,7 @@
 from DeepImageSearch import Index,LoadData,SearchImage
 import os 
 import json
+
 '''
 This method imports the API DeepImageSearch. (For more information on DeepImageSearch Go to it github @DeepImageSearch)
 1.DeepImageSearch will find a list of images in a folder
@@ -16,7 +17,11 @@ def find_sim():
     if 'meta-data-files' not in os.listdir():
         Index(image_list).Start()
 #creats array of similar images of to reference photo. You can choose the amount of similar images you want
-    similar_images =  json.dumps(SearchImage().get_similar_images(image_path="./assets/photos/jeep.jpg",number_of_images=5))
+    similar_images = SearchImage().get_similar_images(image_path="./assets/photos/jeep.jpg",number_of_images=5)
+
 #returns array of similar images
+    
+    
     return similar_images
     
+
