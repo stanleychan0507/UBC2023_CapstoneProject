@@ -1,5 +1,5 @@
 import os
-from flask import Flask,request, url_for
+from flask import Flask,request, send_file
 from flask_cors import CORS
 from imageSplit import split
 from dpimgsrch import find_sim
@@ -33,18 +33,14 @@ def upload():
         photo.save(os.path.join(app.config['UPLOAD_PHOTOS'],photo.filename)) #here
         video.save(os.path.join(app.config['UPLOAD_VIDEOS'],video.filename))
         #split(UPLOAD_VIDEOS+video.filename)
-        response = json.dumps(get_encoded_img("./assets/photos/jeep.jpg"))
         # Enable Access-Control-Allow-Origin
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        return (response) ; 
+        import base64
+        with open("./assets/photos/jeep.jpg", "rb") as img_file:
+            my_string = base64.b64encode(img_file.read()).decode("utf-8")
+        return json.dumps({"image":my_string}) 
 
 
-@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    return response
+
 
 
 if __name__ == "__main__":

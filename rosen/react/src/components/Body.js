@@ -87,13 +87,12 @@ function Body() {
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
             console.log(res);
-
-            // const root = ReactDOM.createRoot(
-            //     document.getElementById('videobox')
-            //   );
-            //  const el= React.createElement("img", {className:"test",src:string}, null );
-            //  root.render(el)
-             
+            const string = "data:image/jpeg;base64," + res.data.image ; 
+            const root = ReactDOM.createRoot(
+                document.getElementById('videobox')
+              );
+             const el= React.createElement("img", {className:"test",src:string}, null );
+             root.render(el)
         })
     }
 
