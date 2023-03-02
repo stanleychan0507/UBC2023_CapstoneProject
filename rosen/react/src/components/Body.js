@@ -28,6 +28,7 @@ function Body() {
     const [hide, setHide] = useState(false);
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
+    const [image,setImage]=useState([]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -86,13 +87,13 @@ function Body() {
           
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
-            console.log(res);
-            const string = "data:image/jpeg;base64," + res.data.image ; 
-            const root = ReactDOM.createRoot(
-                document.getElementById('videobox')
-              );
-             const el= React.createElement("img", {className:"test",src:string}, null );
-             root.render(el)
+            setImage(res.data)
+            //const string = "data:image/jpeg;base64," + res.data.image ; 
+            // const root = ReactDOM.createRoot(
+            //     document.getElementById('videobox')
+            //   );
+            //  const el= React.createElement("img", {className:"test",src:string}, null );
+            //  root.render(el)
         })
     }
 
@@ -189,7 +190,14 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
-                
+                    {
+                        image.map((index,value) => {
+                            return(
+                                <img id= {index} src= {`data:image/jpeg;base64,${value}` } ></img>
+                            )
+                        })
+
+                    }
                 </div>
                 <div className='countainerRun'>
             <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>

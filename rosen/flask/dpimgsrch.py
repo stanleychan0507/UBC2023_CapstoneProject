@@ -3,6 +3,7 @@ from DeepImageSearch import Index,LoadData,SearchImage
 import os 
 import json
 
+
 '''
 This method imports the API DeepImageSearch. (For more information on DeepImageSearch Go to it github @DeepImageSearch)
 1.DeepImageSearch will find a list of images in a folder
@@ -20,8 +21,12 @@ def find_sim():
     similar_images = SearchImage().get_similar_images(image_path="./assets/photos/jeep.jpg",number_of_images=5)
 
 #returns array of similar images
-    
-    
+    # arry= []
+    # import base64
+    # for i in similar_images:
+    #     with open("./assets/images/"+i, "rb") as img_file:
+    #         my_string = base64.b64encode(img_file.read()).decode("utf-8")
+    #         arry.append(my_string)
     return similar_images
     
 

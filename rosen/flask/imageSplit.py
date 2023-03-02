@@ -23,7 +23,8 @@ def split(filename):
 #while loop cuts the image every 50 frames
     while(cap.isOpened()):
         ret, frame = cap.read()
-
+        if count == 10:
+            break;
         if ret == False:
             break
 #if stament for every 50 frames
