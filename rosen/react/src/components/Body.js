@@ -87,22 +87,18 @@ function Body() {
           
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
-            setImage(res.data)
-            //const string = "data:image/jpeg;base64," + res.data.image ; 
-            // const root = ReactDOM.createRoot(
-            //     document.getElementById('videobox')
-            //   );
-            //  const el= React.createElement("img", {className:"test",src:string}, null );
-            //  root.render(el)
+            console.log(res.data.img)
+           // console.log(res.data.length)
+           createDiv(5, res.data.img)
+            //const string = "data:image/jpeg;base64," + res.data.image ;
+
+
         })
     }
 
 
     function createDiv(length, imgsrc) {
-        const root = ReactDOM.createRoot(
-            document.getElementById('videobox')
-          );
-         
+        const root = ReactDOM.createRoot(document.getElementById('videobox'));
           const list = createImg(length,imgsrc)
           const listItems = list.map((list, index) =>
           <span key = {index}>{list}</span>  
@@ -115,10 +111,8 @@ function Body() {
 
           function createImg(num, imgsrc){
             var Arraylist = []
-            for(var i = 0; i < num; i++){
-                var place = imgsrc[i].substr(1);
-                var palcsrcimg = "/flask/" + place; 
-                Arraylist[i] =  React.createElement("img", {className:"test",src:"/jeep.jpg"}, null );
+            for(var i = 1; i <= num; i++){
+                Arraylist[i-1]=(React.createElement("img", {className:"test",src:"data:image/jpeg;base64," + imgsrc[i]}, null ));
             }
             return Arraylist;
           }
@@ -190,14 +184,6 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
-                    {
-                        image.map((index,value) => {
-                            return(
-                                <img id= {index} src= {`data:image/jpeg;base64,${value}` } ></img>
-                            )
-                        })
-
-                    }
                 </div>
                 <div className='countainerRun'>
             <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>

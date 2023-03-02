@@ -39,7 +39,7 @@ def upload():
             with open(value, "rb") as img_file:
                 my_string = base64.b64encode(img_file.read()).decode("utf-8")
                 array[key] = my_string
-        return jsonify(array) 
+        return {"img": array}
 
 
 

@@ -20,13 +20,6 @@ def find_sim():
 #creats array of similar images of to reference photo. You can choose the amount of similar images you want
     similar_images = SearchImage().get_similar_images(image_path="./assets/photos/jeep.jpg",number_of_images=5)
 
-#returns array of similar images
-    # arry= []
-    # import base64
-    # for i in similar_images:
-    #     with open("./assets/images/"+i, "rb") as img_file:
-    #         my_string = base64.b64encode(img_file.read()).decode("utf-8")
-    #         arry.append(my_string)
     return similar_images
     
 
