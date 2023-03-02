@@ -1,8 +1,11 @@
 import os
-from flask import Flask,request
+from flask import Flask,request, jsonify
 from flask_cors import CORS
 from imageSplit import split
 from dpimgsrch import find_sim
+import json
+import base64
+
 
 '''
 This is the main branch where we call all the functions we have made 
@@ -16,12 +19,12 @@ UPLOAD_PHOTOS = './assets/photos/' #here
 UPLOAD_VIDEOS = './assets/videos/'
 app.config['UPLOAD_PHOTOS'] = UPLOAD_PHOTOS #here
 app.config['UPLOAD_VIDEOS'] = UPLOAD_VIDEOS
+
 #Test function to see if react is working.. will not need in future
-@app.route('/')
-def index():
-    return {"greetings":"hello world"}
+
 #This funcnction is requested from front end. This is where photos are cut up  indexed and similar images are found
 @app.route('/app/upload/', methods=['POST'])
+
 def upload():
     if request.method == 'POST':
         #requests files
@@ -29,11 +32,17 @@ def upload():
         video = request.files['video']
         photo.save(os.path.join(app.config['UPLOAD_PHOTOS'],photo.filename)) #here
         video.save(os.path.join(app.config['UPLOAD_VIDEOS'],video.filename))
-        #images are split
-        split(UPLOAD_VIDEOS+video.filename)
-       #similar images is called and send to front end
-        return ({"hello":find_sim() }) ; 
-        
+        #split(UPLOAD_VIDEOS+video.filename)
+        arr1 = find_sim()
+        array= {}
+        for key,value in arr1.items():
+            with open(value, "rb") as img_file:
+                my_string = base64.b64encode(img_file.read()).decode("utf-8")
+                array[key] = my_string
+        return {"img": array}
+
+
+
 
 
 if __name__ == "__main__":

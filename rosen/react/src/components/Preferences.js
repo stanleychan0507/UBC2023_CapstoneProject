@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
+import React from "react"
+import ReactDOM from "react-dom/client"
 
-function Preferences() {
-  return(
-    <h2>Preferences</h2>
-  );
-}
+ return ReactDOM.createRoot(document.getElementsByClassName('videobox')).render(<p>helloworld</p>)
