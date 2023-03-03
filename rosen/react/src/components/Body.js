@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { createElement, useEffect, useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
 import axios from 'axios'
+import ReactDOM from 'react-dom/client'
+
+
+
+
 
 function Body() {
     /*Code added to body Explination: 
     These are constant varibales before the return function: 
-    These call a reacte function to be able to show the modal. 
-    The html code calls a modal Function in react to create the modal
+    These call a reacte function to be able to show the model. 
+    The html code calls a model Function in react to create the modal
     You have your header, body , extra.
     ***NOTE the modal and main page look very similar because eventually we will change the main page to look differently. there will not be a refernce photo on the main page *** 
     */
@@ -23,6 +28,7 @@ function Body() {
     const [hide, setHide] = useState(false);
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
+    const [image,setImage]=useState([]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -36,7 +42,7 @@ function Body() {
           document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
     }
-
+   
     // This is the JS to upload the video 
     function handleChangeVideo(e) {
         console.log(e.target.files);
@@ -53,24 +59,67 @@ function Body() {
         setHide(curr => !curr)
     }
 
-    //handle uploaded documents
-    function handleUpload(e){
+    //handle uploaded documents and calls backend to find similar images
+    function handleSaveChanges(e){
+        e.preventDefault()
+        setShow(false)
+        handleClose();
+    }
+
+    function handleCloseModal(){
+        setFilep(null);
+        setUploadP(null);
+        setFilev(null);
+        setUploadV(null);
+        handleClose();
+        setCurrStateP(false);
+        setCurrStateV(false);
+    }
+    
+
+    function RunProgram(e) {
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
         data.append('video',upLoadV)
+        
+      // createDiv(); 
+          
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
-            console.log(res)
+            console.log(res.data.img)
+           // console.log(res.data.length)
+           createDiv(5, res.data.img)
+            //const string = "data:image/jpeg;base64," + res.data.image ;
+
+
         })
-       
-        setShow(false)
-        setCurrStateP(!filep)
-        setCurrStateV(!filev)
     }
 
 
+    function createDiv(length, imgsrc) {
+        const root = ReactDOM.createRoot(document.getElementById('videobox'));
+          const list = createImg(length,imgsrc)
+          const listItems = list.map((list, index) =>
+          <span key = {index}>{list}</span>  
+          );
+          CreateEl(listItems); 
+          function CreateEl(list){
+            const element = React.createElement("div", {id:"SimImg"}, list); 
+            root.render(element)
+          }
 
+          function createImg(num, imgsrc){
+            var Arraylist = []
+            for(var i = 1; i <= num; i++){
+                Arraylist[i-1]=(React.createElement("img", {className:"test",src:"data:image/jpeg;base64," + imgsrc[i]}, null ));
+            }
+            return Arraylist;
+          }
+          
+          
+    }
+    
   return (
     <>
      
@@ -87,7 +136,6 @@ function Body() {
                         <Modal.Title>Upload Options</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form onSubmit={handleUpload} id='uploads'>
                             <div className='imagebox'>
                                 <div className='titleModelRef'>
                                     <h1 className='reference'>Reference Photo</h1>
@@ -112,13 +160,11 @@ function Body() {
                                     <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
                                 </div>
                             </div>
-                        </form>
-                
                     </Modal.Body>
                     <Modal.Footer>
                         
-                        <Button variant="secondary" onClick={handleClose}>Close</Button>
-                        <Button variant="primary" type="submit" form='uploads'>Save Changes</Button>
+                        <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
+                        <Button variant="primary" onClick= {handleSaveChanges} >Save Changes</Button>
                     </Modal.Footer>
                 </Modal>
         </div>
@@ -137,9 +183,10 @@ function Body() {
             
         <div className='title'>
                 <h1 className='video'>Video</h1>
-                <div className='videobox'></div>
+                <div id='videobox'>
+                </div>
                 <div className='countainerRun'>
-            <Button variant='primary' className='run'>Run</Button>
+            <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
             
