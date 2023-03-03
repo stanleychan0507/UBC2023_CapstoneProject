@@ -32,14 +32,14 @@ def upload():
         video = request.files['video']
         photo.save(os.path.join(app.config['UPLOAD_PHOTOS'],photo.filename)) #here
         video.save(os.path.join(app.config['UPLOAD_VIDEOS'],video.filename))
-        #split(UPLOAD_VIDEOS+video.filename)
+        # split(UPLOAD_VIDEOS+video.filename)
         arr1 = find_sim()
         array= {}
         for key,value in arr1.items():
             with open(value, "rb") as img_file:
                 my_string = base64.b64encode(img_file.read()).decode("utf-8")
                 array[key] = my_string
-        return {"img": array}
+        return {"image":array}
 
 
 

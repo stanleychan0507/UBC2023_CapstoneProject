@@ -28,11 +28,12 @@ function Body() {
     const [hide, setHide] = useState(false);
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
-    const [image,setImage]=useState([]);
-
+    const [array,setArray]=useState([]);
+    const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-   
+    
+
     function handleChangePhoto(e) {
         console.log(e.target.files[0]);
         if(e.target.files.length!== 0){
@@ -76,50 +77,27 @@ function Body() {
         setCurrStateV(false);
     }
     
+    function setValue(array){
+        setArray(array);
+        setReceive(true);
+    }
 
     function RunProgram(e) {
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
         data.append('video',upLoadV)
-        
-      // createDiv(); 
-          
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
-            console.log(res.data.img)
-           // console.log(res.data.length)
-           createDiv(5, res.data.img)
-            //const string = "data:image/jpeg;base64," + res.data.image ;
-
-
+            console.log(res);
+            let img = res.data.image;
+            let arr = Object.values(img)
+            setValue(arr);
         })
     }
 
 
-    function createDiv(length, imgsrc) {
-        const root = ReactDOM.createRoot(document.getElementById('videobox'));
-          const list = createImg(length,imgsrc)
-          const listItems = list.map((list, index) =>
-          <span key = {index}>{list}</span>  
-          );
-          CreateEl(listItems); 
-          function CreateEl(list){
-            const element = React.createElement("div", {id:"SimImg"}, list); 
-            root.render(element)
-          }
-
-          function createImg(num, imgsrc){
-            var Arraylist = []
-            for(var i = 1; i <= num; i++){
-                Arraylist[i-1]=(React.createElement("img", {className:"test",src:"data:image/jpeg;base64," + imgsrc[i]}, null ));
-            }
-            return Arraylist;
-          }
-          
-          
-    }
-    
+ 
   return (
     <>
      
@@ -184,9 +162,12 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
+                    {   
+                        receive? array.map((value,i) =>{return(<div key= {i}><img className='test'  src= {`data:image/jpeg;base64,${value}`}/></div>)}):'' 
+                    }
                 </div>
                 <div className='countainerRun'>
-            <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>
+            <Button disabled={!((filep&&filev))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
             
