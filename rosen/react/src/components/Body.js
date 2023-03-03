@@ -3,11 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
 import axios from 'axios'
-import ReactDOM from 'react-dom/client'
-
-
-
-
 
 function Body() {
     /*Code added to body Explination: 
@@ -77,6 +72,7 @@ function Body() {
         setCurrStateV(false);
     }
     
+    //set json to a state and change tertionary operator state
     function setValue(array){
         setArray(array);
         setReceive(true);
@@ -106,7 +102,6 @@ function Body() {
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
 
-            
             {      //--------------Modal Page -----------------// 
         } 
                 <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
@@ -158,13 +153,10 @@ function Body() {
                     <Button className='hide' onClick={handleHide}>Hide Reference Photo</Button> 
                 </div>
             }
-            
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
-                    {   
-                        receive? array.map((value,i) =>{return(<div key= {i}><img className='test'  src= {`data:image/jpeg;base64,${value}`}/></div>)}):'' 
-                    }
+                    {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>
             <Button disabled={!((filep&&filev))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
