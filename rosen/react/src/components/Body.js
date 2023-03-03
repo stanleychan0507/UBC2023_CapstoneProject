@@ -29,6 +29,7 @@ function Body() {
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
     const [image,setImage]=useState([]);
+    const [VideoName,setVideoName]=useState();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -58,12 +59,28 @@ function Body() {
     function handleHide(){
         setHide(curr => !curr)
     }
+    function handleChangeVideoName(e) {
+          setVideoName(e.target.value); 
+          console.log(VideoName)  
+          console.log(typeof VideoName)
+            
+       
+      }
 
     //handle uploaded documents and calls backend to find similar images
     function handleSaveChanges(e){
         e.preventDefault()
         setShow(false)
+        const TestData = new FormData()
+        TestData.append('video',upLoadV, VideoName)
+        axios.post('http://localhost:5000/app/cut/', TestData)
+        .then(res => {
+        console.log(res)
+
+        })
+
         handleClose();
+
     }
 
     function handleCloseModal(){
@@ -74,6 +91,7 @@ function Body() {
         handleClose();
         setCurrStateP(false);
         setCurrStateV(false);
+        setVideoName(null);
     }
     
 
@@ -81,7 +99,7 @@ function Body() {
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
-        data.append('video',upLoadV)
+        data.append('video',upLoadV, VideoName)
         
       // createDiv(); 
           
@@ -136,8 +154,8 @@ function Body() {
                         <Modal.Title>Upload Options</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                            <div className='imagebox'>
-                                <div className='titleModelRef'>
+                            <div >
+                                {/* <div className='titleModelRef'>
                                     <h1 className='reference'>Reference Photo</h1>
                                     <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
                                         {
@@ -147,7 +165,7 @@ function Body() {
                                         } 
                                     </div>
                                     <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
-                                </div>
+                                </div> */}
                                 <div className='titleModelVideo'>
                                     <h1 className='video'>Video</h1>
                                     <div className='referenceBox_Video' id = 'referenceBoxVideo' >
@@ -158,13 +176,16 @@ function Body() {
                                         } 
                                     </div>
                                     <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
+                                    <div> 
+                                        <label >Name for Video: </label>
+                                        <input type ="text" id = "videoName" onChange={handleChangeVideoName} name = "VideoName"/>
+                                    </div>
                                 </div>
                             </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        
                         <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
-                        <Button variant="primary" onClick= {handleSaveChanges} >Save Changes</Button>
+                        <Button variant="primary" onClick= {handleSaveChanges} >Save Video</Button>
                     </Modal.Footer>
                 </Modal>
         </div>
@@ -175,9 +196,14 @@ function Body() {
                 <div className='title'> 
                 <h1 className='reference'>Reference Photo</h1> 
                 <div className='referencebox'>
-                    <img src = {filep} className='referenceBox__refPhoto' />
+                    {
+                        currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
+                        :
+                        <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
+                    } 
                 </div>
                     <Button className='hide' onClick={handleHide}>Hide Reference Photo</Button> 
+                    <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
                 </div>
             }
             

@@ -152,6 +152,11 @@ color: White
 
 }
 
+#videoName {
+margin-top: 1em;
+margin-left: 1em;
+}
+
 
 #boxforImg{
     border: solid black; 
@@ -172,4 +177,6 @@ color: White
     width: 100px; 
     height: 100px;
 }
+
+
 

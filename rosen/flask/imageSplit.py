@@ -13,13 +13,13 @@ With purpose of this Function is to split a video into frames and save them as i
 #this will cut the photos
 
 #this method first gets video from filepath in the while loop it counts number of frams cut. note we only have 10 frame limit as a test
-def split(filename):
-    cap = cv2.VideoCapture(filename)
+def split(filepath, filename):
+    cap = cv2.VideoCapture(filepath)
 #delcare counter to know when to stop cutting photoes and for image names
     i=1
     count = 0
 #declaire where we will save the images
-    path2 = "./assets/images"
+    path2 = "./videos/"+filename+"/Photos"
 #while loop cuts the image every 50 frames
     while(cap.isOpened()):
         ret, frame = cap.read()
@@ -30,7 +30,8 @@ def split(filename):
 #if stament for every 50 frames
         if i%50 == 0 and count < 10:
             #saves to folder images
-            cv2.imwrite(os.path.join(path2,'torontoPhoto'+str(count)+'.jpg'),frame)
+            cv2.imwrite(os.path.join(path2,"filename"+str(count)+'.jpg'),frame)
+            print("Saved")
             count +=1
 
         i+=1
