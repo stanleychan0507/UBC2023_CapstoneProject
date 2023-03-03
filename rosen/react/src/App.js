@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom"
 function App() {
     return(
       <div>
+        Preloader1
         <Preloader/>
         <Routes>
             <Route path="/" element={ <Body/>} />

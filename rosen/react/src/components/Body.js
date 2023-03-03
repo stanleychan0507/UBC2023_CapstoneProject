@@ -29,6 +29,9 @@ function Body() {
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
     const [image,setImage]=useState([]);
+    const [loading, setLoading] = useState(false);
+
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
