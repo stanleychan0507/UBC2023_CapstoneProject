@@ -41,3 +41,5 @@ function Preloader() {
 }
 
 export default Preloader;
+// References : 
+// https://stackabuse.com/how-to-create-a-loading-animation-in-react-from-scratch/
