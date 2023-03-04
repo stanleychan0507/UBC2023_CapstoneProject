@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
+import '../CSS/Preloader.css';
 
 function Preloader() {
   // const [data, setData] = useState([]);
@@ -23,10 +24,20 @@ function Preloader() {
   }, []);
 
   return (
-    <div className="loader-container">
-      <div className="spinner">Preloader</div>
-    </div>
-  );
+      <div className="container">
+        {loading ? (
+          <div className="loader-container">
+            <div className="spinner"></div>
+          </div>
+        ) : (
+          <div className="main-content">
+            
+            
+            
+          </div>
+        )}
+      </div>
+    );
 }
 
 export default Preloader;
