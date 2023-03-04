@@ -40,6 +40,30 @@ function Preloader() {
     );
 }
 
+// constructor() {
+//   state = {
+//     loading: true
+//   };
+// }
+// componentDidMount() {
+//   fetch('https://jsonplaceholder.typicode.com/todos/1')
+//     .then(response => response.json())
+//     .then(json => {
+//       setState({ loading: false });
+//     })
+//     .catch(err => {
+//       setState({ loading: false });
+//     });
+// }
+// render() {
+//   return (
+//     <React.Fragment>
+//       <YourApp />
+//       <Lines customLoading={loading} />
+//     </React.Fragment>
+//   );
+// }
+
 export default Preloader;
 // References : 
 // https://stackabuse.com/how-to-create-a-loading-animation-in-react-from-scratch/
