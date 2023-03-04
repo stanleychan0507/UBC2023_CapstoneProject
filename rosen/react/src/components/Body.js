@@ -23,8 +23,8 @@ function Body() {
     const [hide, setHide] = useState(false);
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
-    const [image,setImage]=useState([]);
-
+    const [array,setArray]=useState([]);
+    const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     
