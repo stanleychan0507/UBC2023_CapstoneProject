@@ -107,7 +107,7 @@ function Body() {
         .then(res => {
             console.log(res.data.img)
            // console.log(res.data.length)
-           createDiv(5, res.data.img)
+           //createDiv(5, res.data.img)
             //const string = "data:image/jpeg;base64," + res.data.image ;
 
 
@@ -210,6 +210,7 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
+                    
                 </div>
                 <div className='countainerRun'>
             <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>
