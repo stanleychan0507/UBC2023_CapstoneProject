@@ -1,5 +1,5 @@
 import os 
-import shutil
+
 
 def MakeNewDir(filename):
     if not os.path.exists(filename+'-Directory'): 

@@ -1,5 +1,5 @@
 import os
-from flask import Flask,request, jsonify
+from flask import Flask,request
 from flask_cors import CORS
 from imageSplit import split
 from dpimgsrch import find_sim
@@ -14,13 +14,12 @@ This branch get the files where all the images where cut up an dwhere the refere
 app = Flask(__name__)
 CORS(app)
 
-#Get photos
-UPLOAD_PHOTOS = './assets/photos/' #here
-UPLOAD_VIDEOS = './assets/videos/'
-app.config['UPLOAD_PHOTOS'] = UPLOAD_PHOTOS #here
-app.config['UPLOAD_VIDEOS'] = UPLOAD_VIDEOS
 
-#Test function to see if react is working.. will not need in future
+
+
+'''
+This is the Function to where we cut up the videos
+'''
 
 @app.route('/app/cut/', methods=['POST'])
 def cut():
@@ -30,9 +29,14 @@ def cut():
         msg = MakeNewDir(name)
         video.save(os.path.join("./videos/"+name+'/media',name))
         split('./videos/'+name+'/media/'+name, name)
-        return {"message": msg}
+        return {"message": name}
+    
 
-#This funcnction is requested from front end. This is where photos are cut up  indexed and similar images are found
+
+'''
+This funcnction is requested from front end. This is where photos are cut up  indexed and similar images are found
+'''
+
 @app.route('/app/upload/', methods=['POST'])
 
 def upload():
@@ -51,6 +55,12 @@ def upload():
         return {"img": array}
 
 
+
+@app.route('/app/folders/')
+def folders(): 
+    dirNames = next(os.walk("./videos/"))[1]
+
+    return { "Name" : dirNames } 
 
 
 

@@ -30,6 +30,8 @@ function Body() {
     const [currStateV,setCurrStateV]=useState(false);
     const [image,setImage]=useState([]);
     const [VideoName,setVideoName]=useState();
+    const [FileNames,setFileNames]=useState("NoFilenames");
+    const[updateFile, setupdateFile] = useState();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -40,10 +42,9 @@ function Body() {
           setFilep(URL.createObjectURL(e.target.files[0]));
           setUploadP(e.target.files[0])
           setCurrStateP(true)
-          document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
     }
-   
+
     // This is the JS to upload the video 
     function handleChangeVideo(e) {
         console.log(e.target.files);
@@ -52,7 +53,6 @@ function Body() {
           setUploadV(e.target.files[0])
           setCurrStateV(true)
         }
-        document.getElementById('refernceBox__defaultTextVideo').style.display = 'none';
     }
 
     // hide and unhide refence box
@@ -63,8 +63,6 @@ function Body() {
           setVideoName(e.target.value); 
           console.log(VideoName)  
           console.log(typeof VideoName)
-            
-       
       }
 
     //handle uploaded documents and calls backend to find similar images
@@ -75,12 +73,11 @@ function Body() {
         TestData.append('video',upLoadV, VideoName)
         axios.post('http://localhost:5000/app/cut/', TestData)
         .then(res => {
-        console.log(res)
-
+            console.log(res)
+            setupdateFile(res)
+            setCurrStateV(false)
         })
-
         handleClose();
-
     }
 
     function handleCloseModal(){
@@ -106,38 +103,17 @@ function Body() {
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
             console.log(res.data.img)
-           // console.log(res.data.length)
-           //createDiv(5, res.data.img)
-            //const string = "data:image/jpeg;base64," + res.data.image ;
-
-
         })
     }
 
+    useEffect(() => {
+        fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
+         console.log(data.Name);
+         setFileNames(data.Name);
+        });
+      }, [updateFile,setFileNames]);
 
-    function createDiv(length, imgsrc) {
-        const root = ReactDOM.createRoot(document.getElementById('videobox'));
-          const list = createImg(length,imgsrc)
-          const listItems = list.map((list, index) =>
-          <span key = {index}>{list}</span>  
-          );
-          CreateEl(listItems); 
-          function CreateEl(list){
-            const element = React.createElement("div", {id:"SimImg"}, list); 
-            root.render(element)
-          }
 
-          function createImg(num, imgsrc){
-            var Arraylist = []
-            for(var i = 1; i <= num; i++){
-                Arraylist[i-1]=(React.createElement("img", {className:"test",src:"data:image/jpeg;base64," + imgsrc[i]}, null ));
-            }
-            return Arraylist;
-          }
-          
-          
-    }
-    
   return (
     <>
      
@@ -145,10 +121,11 @@ function Body() {
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
-
-            
+            <datalist>
+                
+            </datalist>          
             {      //--------------Modal Page -----------------// 
-        } 
+            } 
                 <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
                     <Modal.Header closeButton className='ModalHead'>
                         <Modal.Title>Upload Options</Modal.Title>
@@ -216,10 +193,9 @@ function Body() {
             <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
-            
-            
         </div>
-        
+
+
 
     </>
   )
