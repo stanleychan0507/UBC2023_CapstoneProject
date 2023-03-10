@@ -23,6 +23,10 @@ function Body() {
     const [hide, setHide] = useState(false);
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
+    const [image,setImage]=useState([]);
+    const [VideoName,setVideoName]=useState();
+    const [FileNames,setFileNames]=useState();
+    const[updateFile, setupdateFile] = useState();
     const [array,setArray]=useState([]);
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
@@ -35,10 +39,9 @@ function Body() {
           setFilep(URL.createObjectURL(e.target.files[0]));
           setUploadP(e.target.files[0])
           setCurrStateP(true)
-          document.getElementById('refernceBox__defaultTextref').style.display = 'none';
         }
     }
-   
+
     // This is the JS to upload the video 
     function handleChangeVideo(e) {
         console.log(e.target.files);
@@ -47,18 +50,29 @@ function Body() {
           setUploadV(e.target.files[0])
           setCurrStateV(true)
         }
-        document.getElementById('refernceBox__defaultTextVideo').style.display = 'none';
     }
 
     // hide and unhide refence box
     function handleHide(){
         setHide(curr => !curr)
     }
+    function handleChangeVideoName(e) {
+          setVideoName(e.target.value); 
+          console.log(VideoName)
+      }
 
     //handle uploaded documents and calls backend to find similar images
     function handleSaveChanges(e){
         e.preventDefault()
         setShow(false)
+        const TestData = new FormData()
+        TestData.append('video',upLoadV, VideoName)
+        axios.post('http://localhost:5000/app/cut/', TestData)
+        .then(res => {
+            console.log(res)
+            setupdateFile(res)
+            setCurrStateV(false)
+        })
         handleClose();
     }
 
@@ -70,6 +84,7 @@ function Body() {
         handleClose();
         setCurrStateP(false);
         setCurrStateV(false);
+        setVideoName(null);
     }
     
     //set json to a state and change tertionary operator state
@@ -82,18 +97,25 @@ function Body() {
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
-        data.append('video',upLoadV)
+        data.append('video',uploadP, VideoName)
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
             console.log(res);
             let img = res.data.image;
             let arr = Object.values(img)
             setValue(arr);
+
         })
     }
 
+    useEffect(() => {
+        fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
+         console.log(data.Name);
+         setFileNames(data.Name);
+         console.log(FileNames)
+        });
+      }, [updateFile,setFileNames]);
 
- 
   return (
     <>
      
@@ -102,25 +124,18 @@ function Body() {
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
 
+            pick a video:
+            <select name="SelectVideo" onChange={handleChangeVideoName} >
+             {FileNames?.map((value,i) =><option key = {i} value = {value}> {value}</option>)}
+            </select>   
             {      //--------------Modal Page -----------------// 
-        } 
+            } 
                 <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
                     <Modal.Header closeButton className='ModalHead'>
                         <Modal.Title>Upload Options</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                            <div className='imagebox'>
-                                <div className='titleModelRef'>
-                                    <h1 className='reference'>Reference Photo</h1>
-                                    <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
-                                        {
-                                            currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
-                                            :
-                                            <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
-                                        } 
-                                    </div>
-                                    <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
-                                </div>
+                            <div >
                                 <div className='titleModelVideo'>
                                     <h1 className='video'>Video</h1>
                                     <div className='referenceBox_Video' id = 'referenceBoxVideo' >
@@ -131,13 +146,16 @@ function Body() {
                                         } 
                                     </div>
                                     <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
+                                    <div> 
+                                        <label >Name for Video: </label>
+                                        <input type ="text" id = "videoName" onChange={handleChangeVideoName} name = "VideoName"/>
+                                    </div>
                                 </div>
                             </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        
                         <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
-                        <Button variant="primary" onClick= {handleSaveChanges} >Save Changes</Button>
+                        <Button variant="primary" onClick= {handleSaveChanges} >Save Video</Button>
                     </Modal.Footer>
                 </Modal>
         </div>
@@ -148,24 +166,29 @@ function Body() {
                 <div className='title'> 
                 <h1 className='reference'>Reference Photo</h1> 
                 <div className='referencebox'>
-                    <img src = {filep} className='referenceBox__refPhoto' />
+                    {
+                        currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
+                        :
+                        <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
+                    } 
                 </div>
                     <Button className='hide' onClick={handleHide}>Hide Reference Photo</Button> 
+                    <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
                 </div>
             }
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
+
                     {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>
             <Button disabled={!((filep&&filev))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
-            
-            
         </div>
-        
+
+
 
     </>
   )
