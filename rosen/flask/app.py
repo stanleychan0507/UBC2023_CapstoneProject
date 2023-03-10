@@ -5,16 +5,12 @@ from imageSplit import split
 from dpimgsrch import find_sim
 from scr import MakeNewDir
 import base64
-
-
 '''
 This is the main branch where we call all the functions we have made 
 This branch get the files where all the images where cut up an dwhere the reference photo is and compares it using deepimage search
 '''
 app = Flask(__name__)
 CORS(app)
-
-
 
 
 '''
@@ -36,9 +32,7 @@ def cut():
 '''
 This funcnction is requested from front end. This is where photos are cut up  indexed and similar images are found
 '''
-
 @app.route('/app/upload/', methods=['POST'])
-
 def upload():
     if request.method == 'POST':
         #requests files
@@ -59,9 +53,7 @@ def upload():
 @app.route('/app/folders/')
 def folders(): 
     dirNames = next(os.walk("./videos/"))[1]
-
     return { "Name" : dirNames } 
-
 
 
 if __name__ == "__main__":

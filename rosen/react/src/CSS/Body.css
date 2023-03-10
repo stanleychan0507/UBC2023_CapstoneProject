@@ -75,6 +75,10 @@
     margin-right:2rem; 
     margin-bottom: 1rem;
     border: 1px solid black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
 }
 
 .referencebox{
@@ -171,12 +175,16 @@ margin-left: 1em;
 }
 
 .test{
-    border: black solid; 
-    display: inline-block;
-    margin: 0.5em; 
-    width: 100px; 
-    height: 100px;
+    padding: 1em; 
+    width: 100%; 
+    height: 100%;
 }
 
-
+.flexbox{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+   
+}
 

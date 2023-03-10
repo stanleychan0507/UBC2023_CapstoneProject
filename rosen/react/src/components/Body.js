@@ -3,11 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
 import axios from 'axios'
-import ReactDOM from 'react-dom/client'
-
-
-
-
 
 function Body() {
     /*Code added to body Explination: 
@@ -32,10 +27,12 @@ function Body() {
     const [VideoName,setVideoName]=useState();
     const [FileNames,setFileNames]=useState();
     const[updateFile, setupdateFile] = useState();
-
+    const [array,setArray]=useState([]);
+    const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-   
+    
+
     function handleChangePhoto(e) {
         console.log(e.target.files[0]);
         if(e.target.files.length!== 0){
@@ -90,6 +87,11 @@ function Body() {
         setVideoName(null);
     }
     
+    //set json to a state and change tertionary operator state
+    function setValue(array){
+        setArray(array);
+        setReceive(true);
+    }
 
     function RunProgram(e) {
         e.preventDefault()
@@ -98,7 +100,11 @@ function Body() {
         data.append('video',uploadP, VideoName)
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
-            console.log(res.data.img)
+            console.log(res);
+            let img = res.data.image;
+            let arr = Object.values(img)
+            setValue(arr);
+
         })
     }
 
@@ -110,7 +116,6 @@ function Body() {
         });
       }, [updateFile,setFileNames]);
 
-
   return (
     <>
      
@@ -118,6 +123,7 @@ function Body() {
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
+
             pick a video:
             <select name="SelectVideo" onChange={handleChangeVideoName} >
              {FileNames?.map((value,i) =><option key = {i} value = {value}> {value}</option>)}
@@ -170,14 +176,14 @@ function Body() {
                     <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
                 </div>
             }
-            
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
-                    
+
+                    {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>
-            <Button onClick= {RunProgram} variant='primary' className='run'>Run</Button>
+            <Button disabled={!((filep&&filev))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
         </div>
