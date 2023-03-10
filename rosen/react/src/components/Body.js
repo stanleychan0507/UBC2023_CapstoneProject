@@ -101,7 +101,7 @@ function Body() {
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
             console.log(res);
-            let img = res.data.image;
+            let img = res.data.img;
             let arr = Object.values(img)
             setValue(arr);
 
