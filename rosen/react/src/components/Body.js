@@ -30,7 +30,7 @@ function Body() {
     const [currStateV,setCurrStateV]=useState(false);
     const [image,setImage]=useState([]);
     const [VideoName,setVideoName]=useState();
-    const [FileNames,setFileNames]=useState("NoFilenames");
+    const [FileNames,setFileNames]=useState();
     const[updateFile, setupdateFile] = useState();
 
     const handleClose = () => setShow(false);
@@ -61,8 +61,7 @@ function Body() {
     }
     function handleChangeVideoName(e) {
           setVideoName(e.target.value); 
-          console.log(VideoName)  
-          console.log(typeof VideoName)
+          console.log(VideoName)
       }
 
     //handle uploaded documents and calls backend to find similar images
@@ -96,10 +95,7 @@ function Body() {
         e.preventDefault()
         const data = new FormData()
         data.append('photo',uploadP)
-        data.append('video',upLoadV, VideoName)
-        
-      // createDiv(); 
-          
+        data.append('video',uploadP, VideoName)
         axios.post('http://localhost:5000/app/upload/', data)
         .then(res => {
             console.log(res.data.img)
@@ -110,6 +106,7 @@ function Body() {
         fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
          console.log(data.Name);
          setFileNames(data.Name);
+         console.log(FileNames)
         });
       }, [updateFile,setFileNames]);
 
@@ -121,9 +118,10 @@ function Body() {
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
-            <datalist>
-                
-            </datalist>          
+            pick a video:
+            <select name="SelectVideo" onChange={handleChangeVideoName} >
+             {FileNames?.map((value,i) =><option key = {i} value = {value}> {value}</option>)}
+            </select>   
             {      //--------------Modal Page -----------------// 
             } 
                 <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
@@ -132,17 +130,6 @@ function Body() {
                     </Modal.Header>
                     <Modal.Body>
                             <div >
-                                {/* <div className='titleModelRef'>
-                                    <h1 className='reference'>Reference Photo</h1>
-                                    <div className='referenceBox_Photo' id = 'referenceBoxPhoto'>
-                                        {
-                                            currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
-                                            :
-                                            <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
-                                        } 
-                                    </div>
-                                    <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
-                                </div> */}
                                 <div className='titleModelVideo'>
                                     <h1 className='video'>Video</h1>
                                     <div className='referenceBox_Video' id = 'referenceBoxVideo' >

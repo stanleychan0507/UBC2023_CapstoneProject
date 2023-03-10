@@ -43,7 +43,7 @@ def upload():
     if request.method == 'POST':
         #requests files
         photo = request.files['photo'] #here
-        video=request.files['video']
+        video= request.files['video']
         photo.save(os.path.join("./videos/"+video.filename+"/ref",photo.filename))
         #should put this into a new function 
         arr1 = find_sim(video.filename,photo.filename)

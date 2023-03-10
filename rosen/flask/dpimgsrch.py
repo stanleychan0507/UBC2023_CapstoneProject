@@ -19,11 +19,12 @@ def find_sim(videoname,photoname):
     pathMain = "./meta-data-files"
     pathVidoFolder = "./videos/"+videoname 
     image_list = LoadData().from_folder(["./videos/"+videoname+"/Photos"])
+
     #if meta-data-file is not fount it will index data. if it is found it will skip this step to save time 
     if 'meta-data-files' not in os.listdir(pathVidoFolder):
        Index(image_list).Start()
     else:
-        shutil.move(pathVidoFolder, pathMain)
+        shutil.move(pathVidoFolder+ "/meta-data-files", pathMain)
     #creats array of similar images of to reference photo. You can choose the amount of similar images you want
     similar_images = SearchImage().get_similar_images(image_path= pathRef,number_of_images=5)
     shutil.move(pathMain,pathVidoFolder)
