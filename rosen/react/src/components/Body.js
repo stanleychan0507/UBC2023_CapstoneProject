@@ -24,7 +24,7 @@ function Body() {
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
     const [image,setImage]=useState([]);
-    const [VideoName,setVideoName]=useState();
+    const [VideoName,setVideoName]=useState(null);
     const [FileNames,setFileNames]=useState();
     const[updateFile, setupdateFile] = useState();
     const [array,setArray]=useState([]);
@@ -115,7 +115,6 @@ function Body() {
          console.log(FileNames)
         });
       }, [updateFile,setFileNames]);
-
   return (
     <>
      
@@ -126,6 +125,7 @@ function Body() {
 
             pick a video:
             <select name="SelectVideo" onChange={handleChangeVideoName} >
+                <option value={"placeholder"}>SelectVideo</option>
              {FileNames?.map((value,i) =><option key = {i} value = {value}> {value}</option>)}
             </select>   
             {      //--------------Modal Page -----------------// 
@@ -183,7 +183,7 @@ function Body() {
                     {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>
-            <Button disabled={!((filep&&filev))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
+            <Button disabled={!((filep&&FileNames.length!=0 && VideoName != null && VideoName != "placeholder"))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
         </div>
