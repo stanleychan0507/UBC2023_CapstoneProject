@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
 import axios from 'axios'
+import Preloader from "./Preloader";
 
 function Body() {
     /*Code added to body Explination: 
@@ -31,6 +32,7 @@ function Body() {
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [loading, setLoading] = useState(false);
     
 
     function handleChangePhoto(e) {
@@ -109,7 +111,7 @@ function Body() {
             let img = res.data.img;
             let arr = Object.values(img)
             setValue(arr);
-
+            setLoading(false);
         })
     }
 
@@ -122,7 +124,6 @@ function Body() {
       }, [updateFile,setFileNames]);
   return (
     <>
-     
         <Navbar/>
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
@@ -184,7 +185,7 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
-
+                    {/*{loading ? <Preloader /> : ""}-->*/}
                     {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>

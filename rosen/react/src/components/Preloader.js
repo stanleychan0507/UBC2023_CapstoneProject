@@ -3,8 +3,6 @@ import ReactLoading from "react-loading";
 import '../CSS/Preloader.css';
 
 function Preloader() {
-  // const [data, setData] = useState([]);
-  // const [done, setDone] = useState(undefined);
   const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
@@ -18,9 +16,6 @@ function Preloader() {
   
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
   }, []);
 
   return (
@@ -31,9 +26,6 @@ function Preloader() {
           </div>
         ) : (
           <div className="main-content">
-            
-            
-            
           </div>
         )}
       </div>
