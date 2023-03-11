@@ -26,6 +26,9 @@ function Preloader() {
           </div>
         ) : (
           <div className="main-content">
+            
+            
+            
           </div>
         )}
       </div>
