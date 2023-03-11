@@ -102,6 +102,8 @@ function Body() {
 
     function RunProgram(e) {
         e.preventDefault()
+        setValue([]);
+        setLoading(true);
         const data = new FormData()
         data.append('photo',uploadP)
         data.append('video',uploadP, VideoName)

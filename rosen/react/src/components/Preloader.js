@@ -4,15 +4,6 @@ import '../CSS/Preloader.css';
 
 function Preloader() {
   const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   fetch("https://jsonplaceholder.typicode.com/posts/1")
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       setData(json);
-  //       setDone(true);
-  //     });
-  // }, []);
   
   useEffect(() => {
     setLoading(true);
@@ -26,9 +17,6 @@ function Preloader() {
           </div>
         ) : (
           <div className="main-content">
-            
-            
-            
           </div>
         )}
       </div>
