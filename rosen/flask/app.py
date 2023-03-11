@@ -22,7 +22,10 @@ def cut():
     if request.method == 'POST':
         video = request.files['video']
         name = video.filename
-        msg = MakeNewDir(name)
+        try:
+            msg = MakeNewDir(name)
+        except FileExistsError:
+            return {"message": "FileExistsError"}
         video.save(os.path.join("./videos/"+name+'/media',name))
         split('./videos/'+name+'/media/'+name, name)
         return {"message": name}
