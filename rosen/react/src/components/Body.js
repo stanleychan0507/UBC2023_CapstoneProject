@@ -70,8 +70,13 @@ function Body() {
         axios.post('http://localhost:5000/app/cut/', TestData)
         .then(res => {
             console.log(res)
-            setupdateFile(res)
-            setCurrStateV(false)
+            if(res.data.message == "FileExistsError"){
+                alert("File name Already Exists, Couldnt not upload video")
+            }else{
+                setCurrStateV(false) 
+                setupdateFile(res)
+            }
+            
         })
         handleClose();
     }
