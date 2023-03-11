@@ -187,7 +187,7 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
-                    {/*{loading ? <Preloader /> : ""}-->*/}
+                    {loading ? <Preloader /> : ""}
                     {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>
