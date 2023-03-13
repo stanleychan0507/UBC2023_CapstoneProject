@@ -28,8 +28,7 @@ function Body() {
     const [FileNames,setFileNames]=useState();
     const[updateFile, setupdateFile] = useState();
     const [array,setArray]=useState([]);
-    const [colour,setColour]=useState();
-    const [colourReceive,setColourReceive]=useState(false);
+    const [time,setTime]=useState([]);
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -62,7 +61,12 @@ function Body() {
     function handleChangeVideoName(e) {
           setVideoName(e.target.value); 
           console.log(VideoName)
-      }
+    }
+
+    function timeSet(){
+        let arr = JSON.parse(localStorage.getItem(VideoName)) || []
+        setTime(arr)
+    }
 
     //handle uploaded documents and calls backend to find similar images
     function handleSaveChanges(e){
@@ -73,6 +77,8 @@ function Body() {
         axios.post('http://localhost:5000/app/cut/', TestData)
         .then(res => {
             console.log(res)
+            let arr = res.data.timestamp
+            localStorage.setItem(VideoName,JSON.stringify(arr))
             if(res.data.message == "FileExistsError"){
                 alert("File name Already Exists, Couldnt not upload video")
             }else{
@@ -101,8 +107,11 @@ function Body() {
         setReceive(true);
     }
 
+  
+
     function RunProgram(e) {
         e.preventDefault()
+        timeSet()
         setValue([]);
         setLoading(true);
         const data = new FormData()
@@ -118,10 +127,7 @@ function Body() {
         })
     }
 
-    function handleColour(){
-        setColour("test1")
-        setColourReceive()
-    }
+   
 
     useEffect(() => {
         fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
@@ -129,7 +135,9 @@ function Body() {
          setFileNames(data.Name);
          console.log(FileNames)
         });
-      }, [updateFile,setFileNames]);
+    }, [updateFile,setFileNames]);
+
+    
   return (
     <>
         <Navbar/>
@@ -194,11 +202,13 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
+                    
                     {loading ? <Preloader /> : ""}
-                    {receive? array.map((value,i) =>{return(<div key= {i}><a href={`data:image/jpeg;base64,${value}`} download={`${VideoName + i}.png`}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a></div>)}):''}
+                    
+                    {receive? array.map((value,i) =>{ return(<div key= {i}><a href={`data:image/jpeg;base64,${value}`} download={`${VideoName + i}(${time[i]}).png`}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a><div className='text'>{time[i]}</div></div>)}):''}
                 </div>
                 <div className='countainerRun'>
-            <Button disabled={!((filep&&FileNames.length!=0 && VideoName != null && VideoName != "placeholder"))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
+            <Button disabled={!((filep&&FileNames.length!==0 && VideoName != null && VideoName !== "placeholder"))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
         </div>
