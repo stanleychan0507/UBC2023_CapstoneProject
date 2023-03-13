@@ -191,7 +191,7 @@ function Body() {
                     {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>
-            <Button disabled={!((filep&&FileNames.length!=0 && VideoName != null && VideoName != "placeholder"))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
+            <Button disabled={!((filep&&FileNames.length!=0 && VideoName != null && VideoName != "placeholder" && loading == false))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
             </div>
         </div>
