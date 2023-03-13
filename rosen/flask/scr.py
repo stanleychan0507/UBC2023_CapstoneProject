@@ -1,4 +1,5 @@
 import os 
+import glob
 
 def MakeNewDir(filename):
     if not os.path.exists(filename+'-Directory'): 
@@ -9,5 +10,10 @@ def MakeNewDir(filename):
      return "MakingFile is Complete"
     else: 
        return "Unable To complete Task, Same name folder"
-
+    
+def deleteFile(filename): 
+    files = glob.glob('./videos/'+filename +'/ref/*')
+    for f in files:
+        os.remove(f)
+    
    
