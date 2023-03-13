@@ -1,8 +1,8 @@
-import React, { createElement, useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
-import axios from 'axios'
+import axios from 'axios';
 import Preloader from "./Preloader";
 
 function Body() {
@@ -24,11 +24,12 @@ function Body() {
     const [hide, setHide] = useState(false);
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
-    const [image,setImage]=useState([]);
     const [VideoName,setVideoName]=useState(null);
     const [FileNames,setFileNames]=useState();
     const[updateFile, setupdateFile] = useState();
     const [array,setArray]=useState([]);
+    const [colour,setColour]=useState();
+    const [colourReceive,setColourReceive]=useState(false);
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -117,6 +118,11 @@ function Body() {
         })
     }
 
+    function handleColour(){
+        setColour("test1")
+        setColourReceive()
+    }
+
     useEffect(() => {
         fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
          console.log(data.Name);
@@ -130,6 +136,7 @@ function Body() {
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
+           
 
             pick a video:
             <select name="SelectVideo" onChange={handleChangeVideoName} >
@@ -188,7 +195,7 @@ function Body() {
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
                     {loading ? <Preloader /> : ""}
-                    {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
+                    {receive? array.map((value,i) =>{return(<div key= {i}><a href={`data:image/jpeg;base64,${value}`} download={`${VideoName + i}.png`}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a></div>)}):''}
                 </div>
                 <div className='countainerRun'>
             <Button disabled={!((filep&&FileNames.length!=0 && VideoName != null && VideoName != "placeholder"))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>

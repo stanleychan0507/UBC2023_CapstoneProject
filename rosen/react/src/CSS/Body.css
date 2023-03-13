@@ -79,6 +79,7 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    scroll-snap-type: y mandatory;
 }
 
 .referencebox{
@@ -180,6 +181,7 @@ margin-left: 1em;
     height: 100%;
 }
 
+
 .flexbox{
     position: relative;
     display: flex;
@@ -188,3 +190,6 @@ margin-left: 1em;
    
 }
 
+img:hover{
+    background-color: #3c5064;
+}
