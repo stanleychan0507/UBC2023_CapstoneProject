@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
+import Modal from 'react-bootstrap/Modal';
 import '../CSS/Preloader.css';
 
 function Preloader() {
@@ -22,6 +23,7 @@ function Preloader() {
       </div>
     );
 }
+
 
 export default Preloader;
 // References : 
