@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
 import axios from 'axios'
 import Preloader from "./Preloader";
-
+import PreloaderCut from './PreloaderCut';
 function Body() {
     /*Code added to body Explination: 
     These are constant varibales before the return function: 
@@ -33,6 +33,7 @@ function Body() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [loading, setLoading] = useState(false);
+    const [loadingcut, setLoadingcut] = useState(false);
     
 
     function handleChangePhoto(e) {
@@ -67,6 +68,7 @@ function Body() {
     function handleSaveChanges(e){
         e.preventDefault()
         setShow(false)
+        setLoadingcut(true)
         const TestData = new FormData()
         TestData.append('video',upLoadV, VideoName)
         axios.post('http://localhost:5000/app/cut/', TestData)
@@ -78,7 +80,7 @@ function Body() {
                 setCurrStateV(false) 
                 setupdateFile(res)
             }
-            
+            setLoadingcut(false)
         })
         handleClose();
     }
@@ -126,7 +128,9 @@ function Body() {
       }, [updateFile,setFileNames]);
   return (
     <>
+        {loadingcut ? <PreloaderCut />: ""}
         <Navbar/>
+        
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
@@ -188,6 +192,7 @@ function Body() {
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
                     {loading ? <Preloader /> : ""}
+
                     {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>
