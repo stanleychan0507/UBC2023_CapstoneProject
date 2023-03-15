@@ -41,14 +41,10 @@ const Navbar = () => {
   function handleDelete(e){
     e.preventDefault(); 
     console.log(e.target.value)
-   const  data = new FormData() 
-   const name = e.target.value
-    
-    axios.POST('http://localhost:5000/app/delete/', name,{
-    headers: {
-      'Content-Type': 'text/plain'
-    }
-    } )
+    const  data = new FormData() 
+    const name = e.target.value
+    data.append('filename', name)
+    axios.post('http://localhost:5000/app/delete/', data)
         .then(res => {
             console.log(res);
         }).catch(err => {

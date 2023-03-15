@@ -59,11 +59,12 @@ def folders():
     dirNames = next(os.walk("./videos/"))[1]
     return { "Name" : dirNames } 
 
-@app.route('/app/delete/')
+@app.route('/app/delete/', methods=['POST'])
 def deleteFolderPath(): 
     if request.method == 'POST':
-        mystring = request.data.decode('utf-8')
-        return { "Name" : mystring } 
+        mystring = request.form['filename']
+        
+        return { "Name" : mystring} 
 
 if __name__ == "__main__":
     app.run(debug=True,host="0.0.0.0")
