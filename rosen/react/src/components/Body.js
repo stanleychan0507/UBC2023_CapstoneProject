@@ -27,7 +27,7 @@ function Body() {
     const [image,setImage]=useState([]);
     const [VideoName,setVideoName]=useState(null);
     const [FileNames,setFileNames]=useState();
-    const[updateFile, setupdateFile] = useState();
+    const[updateFile, setupdateFile] = useState(1);
     const [array,setArray]=useState([]);
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
@@ -54,6 +54,10 @@ function Body() {
         }
     }
 
+    function checkForUpdate(){
+        setupdateFile(updateFile + 1)
+    }
+
     // hide and unhide refence box
     function handleHide(){
         setHide(curr => !curr)
@@ -77,12 +81,13 @@ function Body() {
                 alert("File name Already Exists, Couldnt not upload video")
             }else{
                 setCurrStateV(false) 
-                setupdateFile(res)
+                setupdateFile(updateFile + 1)
             }
             setLoadingcut(false)
         })
         handleClose();
     }
+
 
     function handleCloseModal(){
         setFilep(null);
@@ -125,17 +130,17 @@ function Body() {
          console.log(FileNames)
         });
       }, [updateFile,setFileNames]);
+      
   return (
     <>
         {loadingcut ? <PreloaderCut />: ""}
         <Navbar/>
-        
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
 
             pick a video:
-            <select name="SelectVideo" onChange={handleChangeVideoName} >
+            <select name="SelectVideo" onChange={handleChangeVideoName} onClick={checkForUpdate} >
                 <option value={"placeholder"}>SelectVideo</option>
              {FileNames?.map((value,i) =><option key = {i} value = {value}> {value}</option>)}
             </select>   
@@ -191,7 +196,6 @@ function Body() {
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
                     {loading ? <Preloader /> : ""}
-
                     {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
                 </div>
                 <div className='countainerRun'>

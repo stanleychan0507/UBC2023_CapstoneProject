@@ -15,13 +15,11 @@ const Navbar = () => {
   const handleShowHelp = () =>setShowHelp(true);
   const handleCloseHelp = () => setShowHelp(false);
   const [showSettings, setShowSettings] = useState(false);
-  const handleShowSettings = () =>setShowSettings(true);
- 
   const[frames, setFrames] = useState(10);
   const[frameschanged, setframeschanged] = useState(false)
   const[SI, setSI] = useState(5);
   const[SIchanged, setSIchanged] = useState(false);
-  const [updateFile, setupdatefile] = useState();
+  const [updateFile, setupdatefile] = useState(1);
   const[Filename, setFileName] = useState() ;
 
   function handleCloseSettings() {
@@ -45,6 +43,15 @@ const Navbar = () => {
     setframeschanged(false)
   }
 
+  function handleShowSettings() {
+    setShowSettings(true);
+    setupdatefile(updateFile+1)
+  }
+
+  function handleCloseSettings() {
+    setShowSettings(false);
+  }
+
   function handleChangeSI(e) {
     setSI(e.target.value); 
     console.log(SI)
@@ -61,6 +68,7 @@ const Navbar = () => {
     axios.post('http://localhost:5000/app/delete/', data)
         .then(res => {
             console.log(res);
+            setupdatefile(updateFile+1)
         }).catch(err => {
           console.error(err);
         });
@@ -78,7 +86,7 @@ const Navbar = () => {
     fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
      setFileName(data.Name);
     });
-  }, [showSettings ,setFileName]);
+  }, [updateFile ,setFileName]);
 
 
 

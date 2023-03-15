@@ -5,6 +5,7 @@ from imageSplit import split
 from dpimgsrch import find_sim
 from scr import MakeNewDir, deleteRef
 import base64
+import shutil
 '''
 This is the main branch where we call all the functions we have made 
 This branch get the files where all the images where cut up an dwhere the reference photo is and compares it using deepimage search
@@ -86,8 +87,11 @@ def folders():
 def deleteFolderPath(): 
     if request.method == 'POST':
         mystring = request.form['filename']
+        path = './videos/'+mystring
+        shutil.rmtree(path)
+        return {"test": "test"}
         
-        return { "Name" : mystring} 
+            
 
 if __name__ == "__main__":
     app.run(debug=True,host="0.0.0.0")
