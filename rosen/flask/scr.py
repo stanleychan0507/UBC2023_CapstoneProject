@@ -11,8 +11,13 @@ def MakeNewDir(filename):
     else: 
        return "Unable To complete Task, Same name folder"
     
-def deleteFile(filename): 
+def deleteRef(filename): 
     files = glob.glob('./videos/'+filename +'/ref/*')
+    for f in files:
+        os.remove(f)
+
+def deleteFolder(filename):
+    files = glob.glob('./videos/'+filename+'/*')
     for f in files:
         os.remove(f)
     

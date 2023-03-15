@@ -34,7 +34,6 @@ function Body() {
     const handleShow = () => setShow(true);
     const [loading, setLoading] = useState(false);
     const [loadingcut, setLoadingcut] = useState(false);
-    
 
     function handleChangePhoto(e) {
         console.log(e.target.files[0]);

@@ -3,7 +3,7 @@ from flask import Flask,request
 from flask_cors import CORS
 from imageSplit import split
 from dpimgsrch import find_sim
-from scr import MakeNewDir, deleteFile
+from scr import MakeNewDir, deleteRef, deleteFolder
 import base64
 '''
 This is the main branch where we call all the functions we have made 
@@ -49,7 +49,7 @@ def upload():
             with open(value, "rb") as img_file:
                 my_string = base64.b64encode(img_file.read()).decode("utf-8")
                 array[key] = my_string
-        deleteFile(video.filename)
+        deleteRef(video.filename)
         return {"img": array}
 
 
@@ -59,6 +59,11 @@ def folders():
     dirNames = next(os.walk("./videos/"))[1]
     return { "Name" : dirNames } 
 
+@app.route('/app/delete/')
+def deleteFolderPath(): 
+    if request.method == 'POST':
+        mystring = request.data.decode('utf-8')
+        return { "Name" : mystring } 
 
 if __name__ == "__main__":
     app.run(debug=True,host="0.0.0.0")
