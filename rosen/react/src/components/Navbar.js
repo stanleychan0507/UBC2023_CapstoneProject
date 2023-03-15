@@ -113,16 +113,18 @@ const Navbar = () => {
        <Modal.Body> 
         <div className='HelpModal_Information'> 
           <list> 
-              <p> Step1: Click the upload button on the top left hand side of the page</p>
-              <p> Step2: Upload a video and reference photo you wish to find in the video</p>
-              <p> Step3: Press save to continue to training </p>
-              <p> Step4: Press the run under the video to start training </p>
-              <p> Volia</p> 
+              <p> Step1: Click the Upload new Video Button</p>
+              <p> Step2: Upload a video and give it a name make sure its no a duplicate name</p>
+              <p> Step3: Press Save and wait for the video to turn into images</p>
+              <p> Step4: Now upload a refence photo to find similar searches for  </p>
+              <p> Step5: Press the run button and wait for the magic to happen</p> 
+              <p> Step 6: To download a simlar image click on the image in the video pannel. The time stamp under each video lets you know where in the video it was cut </p>
+              <p>Bonus Infromation: if you want to delete, changes the frames of the video, or get more similar images click the setting icon.</p>
           </list>
         </div>
        </Modal.Body>
             <Modal.Footer>
-               <p> For more infromation or any problems Contact Matthias at: email.com</p>
+               <p> For more infromation or any problems Contact Matthias at: mpeussner@rosen-group.com</p>
             </Modal.Footer>
       </Modal>
 

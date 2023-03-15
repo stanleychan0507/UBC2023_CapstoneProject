@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import axios from 'axios';
 import Preloader from "./Preloader";
 import PreloaderCut from './PreloaderCut';
+import Form from 'react-bootstrap/Form';
 function Body() {
     /*Code added to body Explination: 
     These are constant varibales before the return function: 
@@ -63,7 +64,12 @@ function Body() {
         setHide(curr => !curr)
     }
     function handleChangeVideoName(e) {
-          setVideoName(e.target.value); 
+        if(e.target.value.length>0){
+            setVideoName(e.target.value); 
+        }else{
+            alert("FileNotCreated, No Name Inputed")
+        }
+          
           console.log(VideoName)
     }
 
@@ -148,15 +154,16 @@ function Body() {
         {loadingcut ? <PreloaderCut />: ""}
         <Navbar/>
         <div className="buttons">
-            <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
+            <Button variant="primary" onClick={handleShow} className="upload">Upload New Video</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
-           
-
-            pick a video:
-            <select name="SelectVideo" onChange={handleChangeVideoName} onClick={checkForUpdate} >
+                <h6 className='title_for_video_select'>Select a video:</h6>
+            <div className='SelectVideo'>
+            <Form.Select className="SelectForm"onChange={handleChangeVideoName} onClick={checkForUpdate} >
                 <option value={"placeholder"}>SelectVideo</option>
              {FileNames?.map((value,i) =><option key = {i} value = {value}> {value}</option>)}
-            </select>   
+            </Form.Select> 
+            </div>
+              
             {      //--------------Modal Page -----------------// 
             } 
                 <Modal show={show} onHide={handleClose} centered fullscreen={fullscreen} className='UploadModel'>
@@ -166,7 +173,7 @@ function Body() {
                     <Modal.Body>
                             <div >
                                 <div className='titleModelVideo'>
-                                    <h1 className='video'>Video</h1>
+                                    <h2 className='video'>Upload Video</h2>
                                     <div className='referenceBox_Video' id = 'referenceBoxVideo' >
                                         {
                                             currStateV ? <video  className='referenceBox__VideoPhoto' poster="" src={filev} />
@@ -174,17 +181,16 @@ function Body() {
                                             <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>
                                         } 
                                     </div>
-                                    <input type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
+                                    <Form.Control  type="file" id="videoPhoto"name = "videoPhoto" accept='video/*' onChange={handleChangeVideo} /> 
                                     <div> 
-                                        <label >Name for Video: </label>
-                                        <input type ="text" id = "videoName" onChange={handleChangeVideoName} name = "VideoName"/>
+                                        <Form.Control type ="text" id = "videoName" placeholder="NameForVideo" onChange={handleChangeVideoName} name = "VideoName"/>
                                     </div>
                                 </div>
                             </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
-                        <Button variant="primary" onClick= {handleSaveChanges} >Save Video</Button>
+                        <Button variant="primary"  onClick= {handleSaveChanges} >Save Video</Button>
                     </Modal.Footer>
                 </Modal>
         </div>
@@ -194,21 +200,22 @@ function Body() {
                 '':
                 <div className='title'> 
                 <h1 className='reference'>Reference Photo</h1> 
-                <div className='referencebox'>
+                <div className='referencebox' >
+                    <div className='referenceBox_Photo'>
                     {
                         currStateP ? <img src={filep} alt='Refernece Photo' className='referenceBox__refPhoto' /> 
                         :
-                        <span className='refernceBox__defaultTextref' id = 'refernceBox__defaultTextref'>Image Preview</span>
+                        <span className='referenceBox__defaultTextVideo' id = 'refernceBox__defaultTextVideo'>Image Preview</span>
                     } 
+                    </div>
                 </div>
+                    <Form.Control  type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
                     <Button className='hide' onClick={handleHide}>Hide Reference Photo</Button> 
-                    <input type="file"  id="refPhoto" name = "refPhoto" accept='images/*' onChange={handleChangePhoto}/>
                 </div>
             }
         <div className='title'>
-                <h1 className='video'>Video</h1>
+                <h1 className='video'>Similar Images</h1>
                 <div id='videobox'>
-                    
                     {loading ? <Preloader /> : ""}
                     {receive? array.map((value,i) =>{return(<div key= {i}><a href={value} download={`${VideoName+i}${time[i]}.png`} ><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a><h2>{time[i]}</h2></div>)}):''}
 

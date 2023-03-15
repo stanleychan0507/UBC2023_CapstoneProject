@@ -91,11 +91,8 @@
 
 
 .referenceBox_Photo{
-    width: 30vw;
-    height: 40vh;
-    border: 1px solid black;
-    margin: 2rem;
     display: flex; 
+    height: 100%;
     align-items: center;
     justify-content: center;
     font-weight: bold;
@@ -142,7 +139,7 @@ color: White
     width: 30vw;
     height: 40vh;
     border: 1px solid black;
-    margin: 2rem;
+    margin: 0  2rem 2rem;
     display: flex; 
     align-items: center;
     justify-content: center;
@@ -194,4 +191,26 @@ margin-left: 1em;
 
 .test:hover{
     transform:scale(1.2);
+}
+
+.SelectVideo{
+    width: 12em; 
+    display: inline-block;
+}
+
+.SelectForm{
+    display: inline !important;
+}
+
+.title_for_video_select{
+    display: inline-block;
+    margin-right: 1em;
+}
+#refPhoto{
+    margin-bottom: 1em;
+    width: 20em; 
+}
+#videoPhoto{
+    margin-bottom: 1em;
+    width: 20em; 
 }
