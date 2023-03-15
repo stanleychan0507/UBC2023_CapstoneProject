@@ -214,7 +214,7 @@ function Body() {
                 </div>
             }
         <div className='title'>
-                <h1 className='video'>Video</h1>
+                <h1 className='video'>Similar Images</h1>
                 <div id='videobox'>
                     {loading ? <Preloader /> : ""}
                     {receive? array.map((value,i) =>{return(<div key= {i}><a href={value} donwload={`${VideoName+i}${time[i]}.png`} ></a><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/><h2>{time[i]}</h2></div>)}):''}
