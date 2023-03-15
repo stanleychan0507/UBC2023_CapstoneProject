@@ -12,7 +12,7 @@ This method imports the API DeepImageSearch. (For more information on DeepImageS
 2.Create and Index for the images (using annoy creates a vector index)
 3. using a refence photo searches through  the index and finds all images similar to the reference photo and puts it in an array
 '''
-def find_sim(videoname,photoname): 
+def find_sim(videoname,photoname,SI): 
     # load the Images from the Folder (You can also import data from multiple folder in python list type)
     pathPhotos= "./videos/"+videoname+"/Photos"
     pathRef = "./videos/"+videoname+"/ref/"+photoname
@@ -26,7 +26,7 @@ def find_sim(videoname,photoname):
     else:
         shutil.move(pathVidoFolder+ "/meta-data-files", pathMain)
     #creats array of similar images of to reference photo. You can choose the amount of similar images you want
-    similar_images = SearchImage().get_similar_images(image_path= pathRef,number_of_images=5)
+    similar_images = SearchImage().get_similar_images(image_path= pathRef,number_of_images=SI)
     shutil.move(pathMain,pathVidoFolder)
     return similar_images
     
