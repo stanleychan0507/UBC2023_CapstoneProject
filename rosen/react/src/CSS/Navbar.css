@@ -25,7 +25,7 @@
 }
 
 .help {
-    margin-right: 1rem; 
+    margin: 0em 1rem; 
     background-color:#3c5064 ;
     border-color:#3c5064
 }
@@ -34,8 +34,46 @@
     background-color: #3c5064;
     color: White
     }
+
 .ProjectTitle{
 
     color: white ; 
 
 }
+
+.settingsButton{
+    background-color:#3c5064 ;
+    border-color:#3c5064
+}
+
+.settingsIcon{
+    width:2.5em; 
+    height: 2em;
+}
+
+.SettingsHead {
+    background-color: #3c5064;
+    color: White
+    }
+.SettingsModal{
+    width: 100%; 
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.TitleSettings.active{
+    background-color: #3c5064 !important;
+    border-color:#3c5064;
+}
+
+.Similar-ImagesSettings{
+    margin: 2em 0;
+
+}
+
+.Delete {
+    display: flex;
+    float: right;
+}
+
+

@@ -26,7 +26,7 @@ function Body() {
     const [currStateV,setCurrStateV]=useState(false);
     const [VideoName,setVideoName]=useState(null);
     const [FileNames,setFileNames]=useState();
-    const[updateFile, setupdateFile] = useState();
+    const[updateFile, setupdateFile] = useState(1);
     const [array,setArray]=useState([]);
     const [time,setTime]=useState([]);
     const [receive,setReceive]=useState(false);
@@ -34,7 +34,6 @@ function Body() {
     const handleShow = () => setShow(true);
     const [loading, setLoading] = useState(false);
     const [loadingcut, setLoadingcut] = useState(false);
-    
 
     function handleChangePhoto(e) {
         console.log(e.target.files[0]);
@@ -53,6 +52,10 @@ function Body() {
           setUploadV(e.target.files[0])
           setCurrStateV(true)
         }
+    }
+
+    function checkForUpdate(){
+        setupdateFile(updateFile + 1)
     }
 
     // hide and unhide refence box
@@ -85,12 +88,13 @@ function Body() {
                 alert("File name Already Exists, Couldnt not upload video")
             }else{
                 setCurrStateV(false) 
-                setupdateFile(res)
+                setupdateFile(updateFile + 1)
             }
             setLoadingcut(false)
         })
         handleClose();
     }
+
 
     function handleCloseModal(){
         setFilep(null);
@@ -137,21 +141,19 @@ function Body() {
          setFileNames(data.Name);
          console.log(FileNames)
         });
-    }, [updateFile,setFileNames]);
-
-    
+      }, [updateFile,setFileNames]);
+      
   return (
     <>
         {loadingcut ? <PreloaderCut />: ""}
         <Navbar/>
-        
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
            
 
             pick a video:
-            <select name="SelectVideo" onChange={handleChangeVideoName} >
+            <select name="SelectVideo" onChange={handleChangeVideoName} onClick={checkForUpdate} >
                 <option value={"placeholder"}>SelectVideo</option>
              {FileNames?.map((value,i) =><option key = {i} value = {value}> {value}</option>)}
             </select>   
@@ -208,8 +210,8 @@ function Body() {
                 <div id='videobox'>
                     
                     {loading ? <Preloader /> : ""}
-
                     {receive? array.map((value,i) =>{return(<div key= {i}><a href={value} donwload={`${videoname+i}${time[i]}.png`} ></a><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/><h2>{time[i]}</h2></div>)}):''}
+
                 </div>
                 <div className='countainerRun'>
             <Button disabled={!((filep&&FileNames.length!=0 && VideoName != null && VideoName != "placeholder" && loading == false))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
