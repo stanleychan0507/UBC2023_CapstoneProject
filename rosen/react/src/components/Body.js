@@ -1,8 +1,8 @@
-import React, { createElement, useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from './Navbar';
-import axios from 'axios'
+import axios from 'axios';
 import Preloader from "./Preloader";
 import PreloaderCut from './PreloaderCut';
 function Body() {
@@ -24,11 +24,11 @@ function Body() {
     const [hide, setHide] = useState(false);
     const [currStateP,setCurrStateP]=useState(false);
     const [currStateV,setCurrStateV]=useState(false);
-    const [image,setImage]=useState([]);
     const [VideoName,setVideoName]=useState(null);
     const [FileNames,setFileNames]=useState();
     const[updateFile, setupdateFile] = useState();
     const [array,setArray]=useState([]);
+    const [time,setTime]=useState([]);
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -62,7 +62,12 @@ function Body() {
     function handleChangeVideoName(e) {
           setVideoName(e.target.value); 
           console.log(VideoName)
-      }
+    }
+
+    function timeSet(){
+        let arr = JSON.parse(localStorage.getItem(VideoName)) || []
+        setTime(arr)
+    }
 
     //handle uploaded documents and calls backend to find similar images
     function handleSaveChanges(e){
@@ -74,6 +79,8 @@ function Body() {
         axios.post('http://localhost:5000/app/cut/', TestData)
         .then(res => {
             console.log(res)
+            let arr = res.data.timestamp
+            localStorage.setItem(VideoName,JSON.stringify(arr))
             if(res.data.message == "FileExistsError"){
                 alert("File name Already Exists, Couldnt not upload video")
             }else{
@@ -102,8 +109,11 @@ function Body() {
         setReceive(true);
     }
 
+  
+
     function RunProgram(e) {
         e.preventDefault()
+        timeSet()
         setValue([]);
         setLoading(true);
         const data = new FormData()
@@ -119,13 +129,17 @@ function Body() {
         })
     }
 
+   
+
     useEffect(() => {
         fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
          console.log(data.Name);
          setFileNames(data.Name);
          console.log(FileNames)
         });
-      }, [updateFile,setFileNames]);
+    }, [updateFile,setFileNames]);
+
+    
   return (
     <>
         {loadingcut ? <PreloaderCut />: ""}
@@ -134,6 +148,7 @@ function Body() {
         <div className="buttons">
             <Button variant="primary" onClick={handleShow} className="upload">Upload</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
+           
 
             pick a video:
             <select name="SelectVideo" onChange={handleChangeVideoName} >
@@ -191,6 +206,7 @@ function Body() {
         <div className='title'>
                 <h1 className='video'>Video</h1>
                 <div id='videobox'>
+                    
                     {loading ? <Preloader /> : ""}
 
                     {receive? array.map((value,i) =>{return(<div key= {i}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></div>)}):''}
