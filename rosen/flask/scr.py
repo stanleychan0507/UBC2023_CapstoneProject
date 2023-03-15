@@ -16,9 +16,5 @@ def deleteRef(filename):
     for f in files:
         os.remove(f)
 
-def deleteFolder(filename):
-    files = glob.glob('./videos/'+filename+'/*')
-    for f in files:
-        os.remove(f)
     
    
