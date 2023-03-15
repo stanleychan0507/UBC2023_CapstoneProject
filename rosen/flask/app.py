@@ -70,13 +70,10 @@ def setting():
         array = []
         array.append(frames)
         array.append(SI)
-        
         if global_frames != frames:
             global_frames = frames
-        
         if global_images != SI:
             global_images = SI
-        
         return {"array": array}
 
 

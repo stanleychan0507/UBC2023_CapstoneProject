@@ -36,6 +36,7 @@ const Navbar = () => {
       })
     setShowSettings(false)
   };
+  
   function handleChangeFrames(e) {
     setFrames(e.target.value); 
     console.log(frames)
@@ -46,10 +47,6 @@ const Navbar = () => {
   function handleShowSettings() {
     setShowSettings(true);
     setupdatefile(updateFile+1)
-  }
-
-  function handleCloseSettings() {
-    setShowSettings(false);
   }
 
   function handleChangeSI(e) {

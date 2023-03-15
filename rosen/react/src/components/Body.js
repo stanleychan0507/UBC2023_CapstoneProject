@@ -217,7 +217,7 @@ function Body() {
                 <h1 className='video'>Similar Images</h1>
                 <div id='videobox'>
                     {loading ? <Preloader /> : ""}
-                    {receive? array.map((value,i) =>{return(<div key= {i}><a href={value} download={`${VideoName+i}${time[i]}.png`} ><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a><h2>{time[i]}</h2></div>)}):''}
+                    {receive? array.map((value,i) =>{return(<div key= {i}><a download={`${VideoName+i}(${time[i]}).jpg`}  href={`data:image/jpeg;base64,${value}`}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a><h2 className='time'>{time[i]}</h2></div>)}):''}
 
                 </div>
                 <div className='countainerRun'>
