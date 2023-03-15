@@ -3,7 +3,7 @@ from flask import Flask,request
 from flask_cors import CORS
 from imageSplit import split
 from dpimgsrch import find_sim
-from scr import MakeNewDir
+from scr import MakeNewDir, deleteFile
 import base64
 '''
 This is the main branch where we call all the functions we have made 
@@ -49,6 +49,7 @@ def upload():
             with open(value, "rb") as img_file:
                 my_string = base64.b64encode(img_file.read()).decode("utf-8")
                 array[key] = my_string
+        deleteFile(video.filename)
         return {"img": array}
 
 
