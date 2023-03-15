@@ -99,7 +99,7 @@ const Navbar = () => {
           <li>
              <Button className = "settingsButton" onClick={handleShowSettings}> <img src={set} className="settingsIcon" alt="SettingsButton" /></Button> 
               <Button className="help" onClick={handleShowHelp} > ? </Button>
-             {//<Link to="login">Login</Link>
+             {<Link to="login">Login</Link>
              } 
           </li>
         </ul>
