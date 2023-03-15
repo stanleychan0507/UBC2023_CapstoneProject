@@ -16,7 +16,7 @@ const Navbar = () => {
   const handleCloseHelp = () => setShowHelp(false);
   const [showSettings, setShowSettings] = useState(false);
   const handleShowSettings = () =>setShowSettings(true);
-  const handleCloseSettings = () => setShowSettings(false);
+ 
   const[frames, setFrames] = useState(10);
   const[frameschanged, setframeschanged] = useState(false)
   const[SI, setSI] = useState(5);
@@ -24,6 +24,20 @@ const Navbar = () => {
   const [updateFile, setupdatefile] = useState();
   const[Filename, setFileName] = useState() ;
 
+  function handleCloseSettings() {
+    const data = new FormData();
+    data.append('frames',frames);
+    data.append('SI',SI);
+    axios.post('http://localhost:5000/app/settings/', data)
+      .then(res => {
+        console.log(res);
+        setFrames(res.data.array[0])
+        setSI(res.data.array[1])
+      }).catch(err => {
+        console.error(err);
+      })
+    setShowSettings(false)
+  };
   function handleChangeFrames(e) {
     setFrames(e.target.value); 
     console.log(frames)
