@@ -31,8 +31,11 @@ def cut():
         except FileExistsError:
             return {"message": "FileExistsError"}
         video.save(os.path.join("./videos/"+name+'/media',name))
-        split('./videos/'+name+'/media/'+name, name,global_frames)
-        return {"message": name}
+
+        
+        array = split('./videos/'+name+'/media/'+name, name,global_frames)
+        return {"message": name,"timestamp": array}
+
     
 
 

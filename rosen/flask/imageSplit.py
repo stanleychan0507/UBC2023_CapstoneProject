@@ -1,3 +1,4 @@
+import datetime
 import cv2 
 import os
 
@@ -15,6 +16,7 @@ With purpose of this Function is to split a video into frames and save them as i
 #this method first gets video from filepath in the while loop it counts number of frams cut. note we only have 10 frame limit as a test
 def split(filepath, filename, frames):
     cap = cv2.VideoCapture(filepath)
+
     
     # Get the total number of frames
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -25,6 +27,12 @@ def split(filepath, filename, frames):
     # Calculate the video length in seconds
     length_seconds = frame_count / fps
     #delcare counter to know when to stop cutting photoes and for image names
+    array = []
+
+    
+ 
+#delcare counter to know when to stop cutting photoes and for image names
+
     count = 0
     #declaire where we will save the images
     path2 = "./videos/"+filename+"/Photos"
@@ -39,4 +47,6 @@ def split(filepath, filename, frames):
             cv2.imwrite(os.path.join(path2,"filename"+str(count)+'.jpg'),frame)
             print("Saved")
             count +=1
-    return None
+            array.append(datetime.datetime.fromtimestamp(cap.get(cv2.CAP_PROP_POS_MSEC)/1000.0).strftime('%H:%M:%S'))
+
+        return array
