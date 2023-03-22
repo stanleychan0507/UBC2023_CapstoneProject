@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../CSS/Navbar.css";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/esm/Button';
-import set from "../images/settings-line-icon.png";
+import set from "../images/settings-line-icon-2.png";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios'

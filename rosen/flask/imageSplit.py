@@ -31,10 +31,12 @@ def split(filepath, filename, frames):
     #while loop cuts the image every 50 frames
     while(cap.isOpened()):
         ret, frame = cap.read()
+        if count == 30:
+            break;
         if ret == False:
             break
     #if stament for every 50 frames
-        if count < frames*length_seconds:
+        if count < frames*length_seconds and count < 30:
             #saves to folder images
             cv2.imwrite(os.path.join(path2,"filename"+str(count)+'.jpg'),frame)
             print("Saved")
