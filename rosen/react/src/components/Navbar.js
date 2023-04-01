@@ -22,6 +22,8 @@ const Navbar = () => {
   const [updateFile, setupdatefile] = useState(1);
   const[Filename, setFileName] = useState() ;
 
+  
+
   function handleCloseSettings() {
     const data = new FormData();
     data.append('frames',frames);
@@ -136,7 +138,7 @@ const Navbar = () => {
           <ListGroup className= " VideoSettings">
             <ListGroup.Item className ="TitleSettings"active >Video Settings</ListGroup.Item>
             <ListGroup.Item>Video cut up frames per secound: 
-            <Form.Range min= "1" max = "1000" value = {frames} onChange = {handleChangeFrames}/>
+            <Form.Range min= "1" max = "24" value = {frames} onChange = {handleChangeFrames}/>
               <p>frames: {frames}/sec</p> 
               <p><i>Note higher the frames slower the program</i></p>
             </ListGroup.Item>
@@ -145,7 +147,7 @@ const Navbar = () => {
             <ListGroup.Item className ="TitleSettings"active> Similar-Images Settings</ListGroup.Item>
             <ListGroup.Item>Number of Similar Images:  
               <Form.Label>(1-10000):</Form.Label>
-              <Form.Range min= "1" max = "10000" value = {SI} onChange = {handleChangeSI}/>
+              <Form.Range min= "1" max = "1000" value = {SI} onChange = {handleChangeSI}/>
               <p>SimilarImages: {SI}</p>
             </ListGroup.Item>
           </ListGroup> 

@@ -6,6 +6,7 @@ from dpimgsrch import find_sim
 from scr import MakeNewDir, deleteRef
 import base64
 import shutil
+import re 
 '''
 This is the main branch where we call all the functions we have made 
 This branch get the files where all the images where cut up an dwhere the reference photo is and compares it using deepimage search
@@ -34,7 +35,7 @@ def cut():
 
         
         array = split('./videos/'+name+'/media/'+name, name,global_frames)
-        return {"message": name,"timestamp": array}
+        return {"message": array, "Frames": global_frames}
 
     
 
@@ -53,13 +54,22 @@ def upload():
         #should put this into a new function 
         arr1 = find_sim(video.filename,photo.filename,global_images)
         array= {}
+        Frame = {}
+
+        # Example string
+        numbers= {}
+        # Extract numbers using regular expression
         for key,value in arr1.items():
             with open(value, "rb") as img_file:
                 my_string = base64.b64encode(img_file.read()).decode("utf-8")
                 array[key] = my_string
+                numbers[key]= value
+
         deleteRef(video.filename)
-        return {"img": array}
+        return {"img": array,"Frames": numbers}
     
+
+
 @app.route('/app/settings/', methods=['POST'])
 def setting():
     if request.method == 'POST':

@@ -29,6 +29,8 @@ function Body() {
     const [FileNames,setFileNames]=useState();
     const[updateFile, setupdateFile] = useState(1);
     const [array,setArray]=useState([]);
+    const [frames,setFrames]=useState([]);
+    const [linkOfTime,setLinkOfTime]=useState([]);
     const [time,setTime]=useState([]);
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
@@ -73,10 +75,37 @@ function Body() {
           console.log(VideoName)
     }
 
-    function timeSet(){
-        let arr = JSON.parse(localStorage.getItem(VideoName)) || []
-        setTime(arr)
+    function toTimestamp(timeInSeconds) {
+       
+        var timeToInt = parseInt(timeInSeconds);
+        timeToInt= (timeToInt/24) * 0.83
+
+        var timeInMilliseconds = timeToInt * 1000;
+        
+  
+  // Create a new Date object with the time value
+  var date = new Date(timeInMilliseconds);
+  
+  // Extract the hours, minutes, and seconds from the Date object
+  var hours = date.getUTCHours();
+  var minutes = date.getUTCMinutes();
+  var seconds = date.getUTCSeconds();
+  
+  // Format the timestamp string as HH:MM:SS
+  var timestamp = hours.toString().padStart(2, '0') + ':' +
+                  minutes.toString().padStart(2, '0') + ':' +
+                  seconds.toString().padStart(2, '0');
+  
+  return timestamp;
     }
+      
+      // Example usage
+      
+
+    // function timeSet(){
+    //     let arr = JSON.parse(localStorage.getItem(VideoName)) || []
+    //     setTime(arr)
+    // }
 
     //handle uploaded documents and calls backend to find similar images
     function handleSaveChanges(e){
@@ -88,8 +117,6 @@ function Body() {
         axios.post('http://localhost:5000/app/cut/', TestData)
         .then(res => {
             console.log(res)
-            let arr = res.data.timestamp
-            localStorage.setItem(VideoName,JSON.stringify(arr))
             if(res.data.message == "FileExistsError"){
                 alert("File name Already Exists, Couldnt not upload video")
             }else{
@@ -114,17 +141,33 @@ function Body() {
     }
     
     //set json to a state and change tertionary operator state
-    function setValue(array){
+    function setValue(array,time){
         setArray(array);
+        setLinkOfTime(time);
+        getTimeValues()
         setReceive(true);
+    }
+
+    function getTimeValues(){
+        
+       const numbers = linkOfTime.map((str) => {
+            const match = str.match(/filename(\d+)\.jpg/);
+            return match ? match[1] : null;
+            
+          });
+          setFrames(numbers);
+          console.log(numbers)
+
     }
 
   
 
     function RunProgram(e) {
         e.preventDefault()
-        timeSet()
+        // timeSet()
         setValue([]);
+        setLinkOfTime([]);
+        setFrames([]);
         setLoading(true);
         const data = new FormData()
         data.append('photo',uploadP)
@@ -133,10 +176,13 @@ function Body() {
         .then(res => {
             console.log(res);
             let img = res.data.img;
+            let time = res.data.Frames;
             let arr = Object.values(img)
-            setValue(arr);
+            let arr2 = Object.values(time)
+            setValue(arr, arr2);
             setLoading(false);
         })
+        
     }
 
    
@@ -217,7 +263,7 @@ function Body() {
                 <h1 className='video'>Similar Images</h1>
                 <div id='videobox'>
                     {loading ? <Preloader /> : ""}
-                    {receive? array.map((value,i) =>{return(<div key= {i}><a download={`${VideoName+i}(${time[i]}).jpg`}  href={`data:image/jpeg;base64,${value}`}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a><h2 className='time'>{time[i]}</h2></div>)}):''}
+                    {receive? array.map((value,i) =>{return(<div key= {i}><a download={`${VideoName+i}.jpg`}  href={`data:image/jpeg;base64,${value}`}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a><h2 className='time'> {toTimestamp(frames[i])}</h2></div>)}):''}
 
                 </div>
                 <div className='countainerRun'>
