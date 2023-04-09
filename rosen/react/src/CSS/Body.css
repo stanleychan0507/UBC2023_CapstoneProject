@@ -217,3 +217,11 @@ margin-left: 1em;
 .time{
     text-align: center;
 }
+
+.tooltip .arrow:before {
+    border-top-color: #008ec3 !important;
+}
+
+.tooltip .tooltip-inner {
+    background-color: #3c5064;
+}

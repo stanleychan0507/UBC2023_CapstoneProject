@@ -6,6 +6,8 @@ import axios from 'axios';
 import Preloader from "./Preloader";
 import PreloaderCut from './PreloaderCut';
 import Form from 'react-bootstrap/Form';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 function Body() {
     /*Code added to body Explination: 
     These are constant varibales before the return function: 
@@ -37,6 +39,7 @@ function Body() {
     const handleShow = () => setShow(true);
     const [loading, setLoading] = useState(false);
     const [loadingcut, setLoadingcut] = useState(false);
+    const [toolTipDisplay, setToolTipDisplay] = useState(false);
 
     function handleChangePhoto(e) {
         console.log(e.target.files[0]);
@@ -142,6 +145,7 @@ function Body() {
     
     //set json to a state and change tertionary operator state
     function setValue(array,time){
+        setToolTipDisplay(false);
         setArray(array);
         setLinkOfTime(time);
         getTimeValues()
@@ -181,6 +185,7 @@ function Body() {
             let arr2 = Object.values(time)
             setValue(arr, arr2);
             setLoading(false);
+            setToolTipDisplay(true);
         })
         
     }
@@ -260,12 +265,23 @@ function Body() {
                 </div>
             }
         <div className='title'>
-                <h1 className='video'>Similar Images</h1>
-                <div id='videobox'>
-                    {loading ? <Preloader /> : ""}
-                    {receive? array.map((value,i) =>{return(<div key= {i}><a download={`${VideoName+i}.jpg`}  href={`data:image/jpeg;base64,${value}`}><img className='test' alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/></a><h2 className='time'> {toTimestamp(frames[i])}</h2></div>)}):''}
-
-                </div>
+            <h1 className='video'>Similar Images</h1>
+                    {toolTipDisplay ? 
+                        <OverlayTrigger key="left" placement="left" overlay={
+                            <Tooltip className="tooltip">
+                                <span className="tooltiptext">Click image to download!</span>
+                            </Tooltip>}>
+                        <div id='videobox'>
+                            {receive? array.map((value,i) =>{return(<div key= {i}><a download={`${VideoName+i}.jpg`}  href={`data:image/jpeg;base64,${value}`}>
+                                <img className="test" alt='no image shown' src= {`data:image/jpeg;base64,${value}`}/>
+                                </a><h2 className='time'> {toTimestamp(frames[i])}</h2></div>)}):''}
+                        </div>
+                        </OverlayTrigger>   
+                    : 
+                    <div id='videobox'>
+                        {loading ? <Preloader /> : ""}
+                    </div>
+                    }
                 <div className='countainerRun'>
             <Button disabled={!((filep&&FileNames.length!=0 && VideoName != null && VideoName != "placeholder" && loading == false))} onClick= {RunProgram} variant='primary' className='run'>Run</Button>
         </div>
