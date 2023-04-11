@@ -83,20 +83,20 @@ function Body() {
         var timeInMilliseconds = timeToInt * 1000;
         
   
-  // Create a new Date object with the time value
-  var date = new Date(timeInMilliseconds);
-  
-  // Extract the hours, minutes, and seconds from the Date object
-  var hours = date.getUTCHours();
-  var minutes = date.getUTCMinutes();
-  var seconds = date.getUTCSeconds();
-  
-  // Format the timestamp string as HH:MM:SS
-  var timestamp = hours.toString().padStart(2, '0') + ':' +
-                  minutes.toString().padStart(2, '0') + ':' +
-                  seconds.toString().padStart(2, '0');
-  
-  return timestamp;
+        // Create a new Date object with the time value
+        var date = new Date(timeInMilliseconds);
+        
+        // Extract the hours, minutes, and seconds from the Date object
+        var hours = date.getUTCHours();
+        var minutes = date.getUTCMinutes();
+        var seconds = date.getUTCSeconds();
+        
+        // Format the timestamp string as HH:MM:SS
+        var timestamp = hours.toString().padStart(2, '0') + ':' +
+                        minutes.toString().padStart(2, '0') + ':' +
+                        seconds.toString().padStart(2, '0');
+        
+        return timestamp;
     }
       
       // Example usage
@@ -143,31 +143,15 @@ function Body() {
     //set json to a state and change tertionary operator state
     function setValue(array,time){
         setArray(array);
-        setLinkOfTime(time);
-        getTimeValues()
+        const numbers = time.map((str) => {const match = str.match(/filename(\d+)\.jpg/);return match ? match[1] : null;});
+        setFrames(numbers);
         setReceive(true);
     }
 
-    function getTimeValues(){
-        
-       const numbers = linkOfTime.map((str) => {
-            const match = str.match(/filename(\d+)\.jpg/);
-            return match ? match[1] : null;
-            
-          });
-          setFrames(numbers);
-          console.log(numbers)
-
-    }
-
-  
-
+    
+    
     function RunProgram(e) {
-        e.preventDefault()
-        // timeSet()
-        setValue([]);
-        setLinkOfTime([]);
-        setFrames([]);
+        e.preventDefault();
         setLoading(true);
         const data = new FormData()
         data.append('photo',uploadP)

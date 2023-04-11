@@ -54,8 +54,6 @@ def upload():
         #should put this into a new function 
         arr1 = find_sim(video.filename,photo.filename,global_images)
         array= {}
-        Frame = {}
-
         # Example string
         numbers= {}
         # Extract numbers using regular expression
@@ -63,10 +61,11 @@ def upload():
             with open(value, "rb") as img_file:
                 my_string = base64.b64encode(img_file.read()).decode("utf-8")
                 array[key] = my_string
+                print(value)
                 numbers[key]= value
 
         deleteRef(video.filename)
-        return {"img": array,"Frames": numbers}
+        return {"img": array,"Frames":arr1}
     
 
 
