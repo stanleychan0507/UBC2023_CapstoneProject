@@ -48,7 +48,7 @@ def split(filepath, filename, frames):
             break
         
        
-        if frame_number % 24 == 0:
+        if frame_number % frames == 0:
              cv2.imwrite(os.path.join(path2,"filename"+str(frame_number)+'.jpg'),image)
              count +=1
         

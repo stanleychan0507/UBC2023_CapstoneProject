@@ -140,7 +140,6 @@ const Navbar = () => {
             <ListGroup.Item>Video cut up frames per secound: 
             <Form.Range min= "1" max = "24" value = {frames} onChange = {handleChangeFrames}/>
               <p>frames: {frames}/sec</p> 
-              <p><i>Note higher the frames slower the program</i></p>
             </ListGroup.Item>
           </ListGroup>
           <ListGroup className= "Similar-ImagesSettings">
