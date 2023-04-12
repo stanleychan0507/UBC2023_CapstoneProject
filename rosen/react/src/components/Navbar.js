@@ -93,7 +93,7 @@ const Navbar = () => {
     <div>
       <nav className="navbar">
         <img src={RG} className="logo" alt="Rosen Group logo" />
-        <h1 className='ProjectTitle'>Project Title</h1> 
+        <h1 className='ProjectTitle'>Similar search</h1> 
         <ul>
           <li>
              <Button className = "settingsButton" onClick={handleShowSettings}> <img src={set} className="settingsIcon" alt="SettingsButton" /></Button> 
