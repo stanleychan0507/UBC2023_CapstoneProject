@@ -44,8 +44,6 @@ def split(filepath, filename, frames):
         # If reading the frame was unsuccessful, break out of the loop
         if not success:
             break
-        elif count == 10:
-            break
         
        
         if frame_number % frames == 0:
