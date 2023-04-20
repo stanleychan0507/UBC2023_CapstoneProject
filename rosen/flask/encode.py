@@ -1,3 +1,4 @@
+#This code imports necessary libraries to encode an image to base64 format
 import io
 import base64
 from PIL import Image
