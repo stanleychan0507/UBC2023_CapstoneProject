@@ -23,7 +23,7 @@ def find_sim(video_name, photo_name, num_images):
 
     # If meta-data-file is not found, it will index data. If it is found, it will skip this step to save time.
     if 'meta-data-files' not in os.listdir(path_vid_folder):
-        Index(image_list).start()
+        Index(image_list).Start()
     else:
         shutil.move(path_vid_folder + "/meta-data-files", path_main)
 
