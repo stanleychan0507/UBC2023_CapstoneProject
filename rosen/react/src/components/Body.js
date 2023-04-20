@@ -11,7 +11,9 @@ function Body() {
     // this is the JS to upload the Reference Photo 
     const [show, setShow] = useState(false);
     const [fullscreen, setFullscreen] = useState(true);
+    //state that stores reference photo
     const [filep, setFilep] = useState();
+    //state that stores video data
     const [filev, setFilev] = useState();
     const [uploadP, setUploadP] = useState();
     const [upLoadV, setUploadV] = useState();
@@ -21,8 +23,11 @@ function Body() {
     const [VideoName,setVideoName]=useState(null);
     const [FileNames,setFileNames]=useState();
     const[updateFile, setupdateFile] = useState(1);
+    //state that stores similar images to be mapped
     const [array,setArray]=useState([]);
+    //state that stores timestamps to be mapped
     const [frames,setFrames]=useState([]);
+    //state that disables run button if no video or reference photo is uploaded
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
