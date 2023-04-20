@@ -102,7 +102,8 @@ const Navbar = () => {
         <ul>
           <li>
              <Button className = "settingsButton" onClick={handleShowSettings}> <img src={set} className="settingsIcon" alt="SettingsButton" /></Button>
-              //shows help modal
+              {//shows help modal
+              }
               <Button className="help" onClick={handleShowHelp} > ? </Button>
              {<Link to="login">Login</Link>
              } 

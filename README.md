@@ -11,15 +11,10 @@ The project is part of the Cosc 499 - Capstone Software Engineering Project clas
 
 ## 1. Installation
 - **1a.** As a prerequisite for the project, make sure the device has the following installed : 
-  - Python(ver 3.11.0)
-  - pip (version 3)
   - Docker
 - **1b.** Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) on your system.
-- **1c.** Install [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) as needed for DeepImageSerach.
-- **1d.** Install DeepImageSearch library by typing the following into console.
-```console
-pip install DeepImageSearch --upgrade
-```
+- **1c.** Install [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) for 
+DeepImageSreach
 - Note that as DeepImageSerach is an actively updated library, changes might happens since the day of this documentation. For more information refers to the [DeepImageSeach on Github](https://github.com/TechyNilesh/DeepImageSearch)
 ## 2. Getting started
 - **2a.** Open your terminal and navigate to the root directory of the project, this can be done by typing into the console.
@@ -51,13 +46,6 @@ Our project is to develop an image classifications system alongside a web applic
 <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"> <!---TensorFlow-->
 <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"> <!---Docker-->
 
-## Contribution
-Contribution is what makes coding fun! Anyone are welcomed to fork/clone the project and work on features. If you have a suggestion that would make this better, please fork the repo and create a pull request. 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/NewFeature`)
-3. Commit your Changes (`git commit -m 'Add some NewFeature'`)
-4. Push to the Branch (`git push origin feature/NewFeature`)
-5. Open a Pull Request
 
 ## Future Work
 There are some works for this project that can be carry out for future works :

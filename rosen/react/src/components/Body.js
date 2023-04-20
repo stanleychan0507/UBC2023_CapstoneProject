@@ -180,7 +180,8 @@ function Body() {
         {loadingcut ? <PreloaderCut />: ""}
         <Navbar/>
         <div className="buttons">
-            //show upload modal when button is clicked
+            {//show upload modal when button is clicked
+            }
             <Button variant="primary" onClick={handleShow} className="upload">Upload New Video</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
                 <h6 className='title_for_video_select'>Select a video:</h6>
