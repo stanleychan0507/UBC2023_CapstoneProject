@@ -7,13 +7,6 @@ import Preloader from "./Preloader";
 import PreloaderCut from './PreloaderCut';
 import Form from 'react-bootstrap/Form';
 function Body() {
-    /*Code added to body Explination: 
-    These are constant varibales before the return function: 
-    These call a reacte function to be able to show the model. 
-    The html code calls a model Function in react to create the modal
-    You have your header, body , extra.
-    ***NOTE the modal and main page look very similar because eventually we will change the main page to look differently. there will not be a refernce photo on the main page *** 
-    */
 
     // this is the JS to upload the Reference Photo 
     const [show, setShow] = useState(false);
@@ -30,14 +23,13 @@ function Body() {
     const[updateFile, setupdateFile] = useState(1);
     const [array,setArray]=useState([]);
     const [frames,setFrames]=useState([]);
-    const [linkOfTime,setLinkOfTime]=useState([]);
-    const [time,setTime]=useState([]);
     const [receive,setReceive]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [loading, setLoading] = useState(false);
     const [loadingcut, setLoadingcut] = useState(false);
 
+    //sets files uploaded to a state
     function handleChangePhoto(e) {
         console.log(e.target.files[0]);
         if(e.target.files.length!== 0){
@@ -47,7 +39,7 @@ function Body() {
         }
     }
 
-    // This is the JS to upload the video 
+    // sets video file to state
     function handleChangeVideo(e) {
         console.log(e.target.files);
         if(e.target.files.length!== 0){
@@ -57,6 +49,7 @@ function Body() {
         }
     }
 
+    // this is the JS to upload the Reference Photo
     function checkForUpdate(){
         setupdateFile(updateFile + 1)
     }
@@ -75,6 +68,7 @@ function Body() {
           console.log(VideoName)
     }
 
+    //conversion for timestamp
     function toTimestamp(timeInSeconds) {
        
         var timeToInt = parseInt(timeInSeconds);
@@ -98,14 +92,6 @@ function Body() {
         
         return timestamp;
     }
-      
-      // Example usage
-      
-
-    // function timeSet(){
-    //     let arr = JSON.parse(localStorage.getItem(VideoName)) || []
-    //     setTime(arr)
-    // }
 
     //handle uploaded documents and calls backend to find similar images
     function handleSaveChanges(e){
@@ -128,7 +114,7 @@ function Body() {
         handleClose();
     }
 
-
+    //return state to default once modal is closed
     function handleCloseModal(){
         setFilep(null);
         setUploadP(null);
@@ -149,7 +135,7 @@ function Body() {
     }
 
     
-    
+    // send data to backend to find similar images
     function RunProgram(e) {
         e.preventDefault();
         setLoading(true);
@@ -170,7 +156,7 @@ function Body() {
     }
 
    
-
+    //get all the video names from the backend
     useEffect(() => {
         fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
          console.log(data.Name);
@@ -184,6 +170,7 @@ function Body() {
         {loadingcut ? <PreloaderCut />: ""}
         <Navbar/>
         <div className="buttons">
+            //show upload modal when button is clicked
             <Button variant="primary" onClick={handleShow} className="upload">Upload New Video</Button>
             { hide ? <Button className='unhide' onClick={handleHide}>Unhide Reference Photo</Button>: ''}
                 <h6 className='title_for_video_select'>Select a video:</h6>

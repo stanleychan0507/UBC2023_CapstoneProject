@@ -23,7 +23,7 @@ const Navbar = () => {
   const[Filename, setFileName] = useState() ;
 
   
-
+  //sends fps and similar images to the backend after modal is closed
   function handleCloseSettings() {
     const data = new FormData();
     data.append('frames',frames);
@@ -39,6 +39,7 @@ const Navbar = () => {
     setShowSettings(false)
   };
   
+  //set frame value to a state
   function handleChangeFrames(e) {
     setFrames(e.target.value); 
     console.log(frames)
@@ -46,11 +47,13 @@ const Navbar = () => {
     setframeschanged(false)
   }
 
+  //executes when the settings button is clicked
   function handleShowSettings() {
     setShowSettings(true);
     setupdatefile(updateFile+1)
   }
 
+  //set similar images value to a state
   function handleChangeSI(e) {
     setSI(e.target.value); 
     console.log(SI)
@@ -58,6 +61,7 @@ const Navbar = () => {
     setSIchanged(false)
   }
 
+  //deletes video file from backend
   function handleDelete(e){
     e.preventDefault(); 
     console.log(e.target.value)
@@ -81,6 +85,7 @@ const Navbar = () => {
     
   }, [SIchanged,setSI])
 
+  //retrive video file name from backend
   useEffect(() => {
     fetch('http://localhost:5000/app/folders/').then(res => res.json()).then(data => {
      setFileName(data.Name);
@@ -96,7 +101,8 @@ const Navbar = () => {
         <h1 className='ProjectTitle'>Similar search</h1> 
         <ul>
           <li>
-             <Button className = "settingsButton" onClick={handleShowSettings}> <img src={set} className="settingsIcon" alt="SettingsButton" /></Button> 
+             <Button className = "settingsButton" onClick={handleShowSettings}> <img src={set} className="settingsIcon" alt="SettingsButton" /></Button>
+              //shows help modal
               <Button className="help" onClick={handleShowHelp} > ? </Button>
              {<Link to="login">Login</Link>
              } 
